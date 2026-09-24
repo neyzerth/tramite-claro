@@ -9,7 +9,8 @@ from pathlib import Path
 
 # Carpeta donde se guardan los documentos Markdown generados.
 # La ruta es relativa al directorio desde donde se ejecuta uvicorn (BackEnd/).
-DOCUMENTOS_DIR = Path("documentos")
+BASE_DIR = Path(__file__).resolve().parent.parent
+DOCUMENTOS_DIR = BASE_DIR / "documentos"
 
 
 def slug(texto: str, limite: int = 60) -> str:
@@ -55,7 +56,7 @@ def generar_markdown(
     # Esto cubre el caso en que la DB ya tiene el registro pero el archivo
     # también existe (consistencia garantizada).
     if ruta.exists():
-        return str(ruta)
+        return f"documentos/{nombre_archivo}"
 
     # Asegurar que el directorio documentos/ exista antes de escribir.
     DOCUMENTOS_DIR.mkdir(parents=True, exist_ok=True)
@@ -68,4 +69,4 @@ def generar_markdown(
     # Escribir el archivo en UTF-8 para soportar caracteres del español.
     ruta.write_text(contenido, encoding="utf-8")
 
-    return str(ruta)
+    return f"documentos/{nombre_archivo}"

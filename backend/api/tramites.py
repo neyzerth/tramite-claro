@@ -3,7 +3,7 @@
 # el Markdown si es necesario, y retornar las URLs de los archivos.
 
 from fastapi import APIRouter, Depends, HTTPException
-from sqlModel import Session, select
+from sqlmodel import Session, select
 
 from backend.core.markdown_utils import generar_markdown
 from backend.database import get_session

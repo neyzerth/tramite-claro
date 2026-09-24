@@ -2,7 +2,7 @@
 # Solo guarda RUTAS a los archivos generados (documentos y audios),
 # nunca el contenido de los archivos directamente en la base de datos.
 
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Optional
 
 from sqlmodel import Field, SQLModel
@@ -38,4 +38,6 @@ class Tramite(SQLModel, table=True):
     ruta_audio: Optional[str] = Field(default=None)
 
     # Fecha y hora UTC en que se procesó y guardó el trámite por primera vez.
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(
+        default_factory=lambda: datetime.now(timezone.utc)
+    )

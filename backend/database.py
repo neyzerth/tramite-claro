@@ -6,7 +6,11 @@ from sqlmodel import SQLModel, Session, create_engine
 
 # Ruta del archivo SQLite. Se crea automáticamente en BackEnd/tramites.db
 # al arrancar la aplicación si no existe.
-DATABASE_URL = "sqlite:///./tramites.db"
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+
+DATABASE_URL = f"sqlite:///{BASE_DIR / 'tramites.db'}"
 
 # check_same_thread=False es necesario para SQLite cuando FastAPI usa
 # múltiples hilos (lo hace por defecto con async).

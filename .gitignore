@@ -4,3 +4,9 @@ backend/venv/
 .end
 __pycache__/
 *.pyc
+backend/documentos/*
+!backend/documentos/.gitkeep
+
+backend/audios/*
+!backend/audios/.gitkeep
+backend/tramites.db

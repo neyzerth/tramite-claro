@@ -3,13 +3,14 @@
 # de tramites y sirve los archivos estaticos generados (documentos y audios).
 
 from contextlib import asynccontextmanager
-
+from pathlib import Path
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
 from backend.api.tramites import router as tramites_router
 from backend.database import create_db_and_tables
 
+BASE_DIR = Path(__file__).resolve().parent
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -39,11 +40,20 @@ app = FastAPI(
 # Montar los archivos .md generados como estaticos en /documentos.
 # Permite descargar cualquier archivo con: GET /documentos/{nombre_archivo}.md
 # check_dir=False evita que falle si la carpeta esta vacia al importar el modulo.
-app.mount("/documentos", StaticFiles(directory="documentos", check_dir=False), name="documentos")
 
+app.mount(
+    "/documentos",
+    StaticFiles(directory=BASE_DIR / "documentos", check_dir=False),
+    name="documentos",
+)
+
+app.mount(
+    "/audios",
+    StaticFiles(directory=BASE_DIR / "audios", check_dir=False),
+    name="audios",
+)
 # Montar los audios generados como estaticos en /audios.
 # Por ahora la carpeta existe pero estara vacia hasta que se integre TTS.
-app.mount("/audios", StaticFiles(directory="audios", check_dir=False), name="audios")
 
 # Registrar el router de tramites. Todos sus endpoints quedan bajo /tramites.
 app.include_router(tramites_router)
