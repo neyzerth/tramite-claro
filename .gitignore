@@ -10,3 +10,7 @@ backend/documentos/*
 backend/audios/*
 !backend/audios/.gitkeep
 backend/tramites.db
+backend/lsm/venv312/
+backend/lsm/models/
+backend/lsm/dataset/
+backend/lsm/modelo_lsm/
