@@ -112,6 +112,29 @@ class LSMResponse(BaseModel):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# Endpoints de síntesis directa (TTS)
+# ─────────────────────────────────────────────────────────────────────────────
+
+class TTSRequest(BaseModel):
+    texto: str = Field(
+        ...,
+        min_length=1,
+        max_length=4800,
+        description="Texto a sintetizar. Máximo 4 800 caracteres (límite Watson TTS).",
+        examples=["Necesitas una identificación oficial vigente y comprobante de domicilio."],
+    )
+
+
+class TTSResponse(BaseModel):
+    audio_base64: str = Field(
+        ..., description="Audio sintetizado por Watson TTS, codificado en Base64 (MP3)."
+    )
+    longitud_bytes: int = Field(
+        ..., description="Tamaño del MP3 resultante en bytes, para diagnóstico."
+    )
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # Endpoints de consulta ciudadana (accesible)
 # ─────────────────────────────────────────────────────────────────────────────
 
