@@ -335,6 +335,104 @@ TRAMITES_DB: dict[str, dict] = {
         "horario": "Lunes a viernes de 8:00 a 15:00 horas",
         "modalidad": "presencial",
     },
+    # ── Fichas reales RETyS BC (fichas-dificiles.json) ────────────────────────
+    "cespt_041": {
+        "nombre": "Registro o Revalidación de Exención de Permiso de Descarga de Aguas Residuales para Comercios y Empresas de Servicios",
+        "descripcion": "Solicitar la exención del trámite de permiso de descargas, debido a que no se generan aguas residuales de procesos de producción de bienes o servicios.",
+        "dependencia": "Comisión Estatal de Servicios Públicos de Tijuana",
+        "requisitos": [
+            "Original y copia de la Solicitud de Exención FRM-022 debidamente llenado y firmado",
+            "Copia de Constancia de Situación Fiscal de la empresa",
+            "Fotografías a color de las áreas del interior de la empresa",
+            "Copia de documentales que acrediten la no generación de descargas de aguas residuales de proceso",
+        ],
+        "costo": "COSTO VARIABLE: Por expedición: $1,7999.46 pesos | Por la revalidación anual: $976.71 pesos | Septiembre 2026",
+        "tiempo_respuesta": "30 Días Hábiles",
+        "url_oficial": "https://retys.bajacalifornia.gob.mx/Portal/TyS/1634",
+        "fundamento_legal": "Ley Que Reglamenta El Servicio De Agua Potable En El Estado De Baja California Artículos 94 y 109; "
+                            "Ley de Comisiones Estatales de Servicios Públicos del Estado De Baja California Artículos 1 y 2; "
+                            "Ley de Ingresos del Estado de Baja California para el Ejercicio Fiscal del año 2026 Artículo 9",
+        "horario": "",
+        "modalidad": "presencial",
+    },
+    "sh_licencia_conducir": {
+        "nombre": "Expedición de Licencia de Conducir",
+        "descripcion": "Colaborar con el ciudadano para cumplir con los requisitos para obtener su licencia de conducir.",
+        "dependencia": "Secretaría de Hacienda de Baja California",
+        "requisitos": [
+            "Cita",
+            "Solicitud del trámite (formato de manifiesto en la Recaudación de Rentas)",
+            "Identificación oficial con fotografía vigente (INE, pasaporte, cédula, matrícula consular, cartilla militar) — original y copia",
+            "Comprobante de domicilio no mayor a tres meses — original y copia",
+            "Certificado médico de institución pública o privada — original y copia",
+            "Carta de no antecedentes penales (últimos 5 años)",
+            "Examen antidoping",
+            "Certificado de estudios con fotografía (mínimo primaria; solo licencias tipo B y D)",
+            "Aprobar exámenes teórico y práctico de manejo con tarjeta de circulación vigente",
+            "Pago correspondiente (efectivo, cheque certificado, tarjeta débito/crédito excepto American Express)",
+        ],
+        "costo": "COSTO VARIABLE: Mes de Septiembre de 2026. Automovilista 3 años $1,120.39 M.N. | 5 años $1,493.85 M.N. | "
+                 "Motociclista 3 años $1,120.39 M.N. | 5 años $1,493.85 M.N. | Chofer C 3 años $1,278.47 M.N. | "
+                 "5 años $1,704.63 M.N. | Chofer A, B Y D $2,108.06 M.N. | Motociclista y automóvil 16-18 años $827.38 M.N. | "
+                 "Licencia Provisional hasta 9 meses $959.80 M.N.",
+        "tiempo_respuesta": "45 Minutos",
+        "url_oficial": "https://retys.bajacalifornia.gob.mx/Portal/TyS/661",
+        "fundamento_legal": "Ley de Ingresos del Estado de Baja California para el Ejercicio Fiscal del Año 2025, "
+                            "Artículo 10, Fracción I, Inciso A; "
+                            "Ley que Regula los Servicios de Control Vehicular en el Estado de Baja California, Artículos 34 y 36",
+        "horario": "",
+        "modalidad": "presencial",
+    },
+    "cejum_001": {
+        "nombre": "Atención Integral a Mujeres Víctimas de Violencia",
+        "descripcion": "Asesoría psicológica, asesoría legal, trabajo social, atención médica preventiva, ludoteca, estancia transitoria, área de empoderamiento y prevención.",
+        "dependencia": "Centro de Justicia para las Mujeres del Estado de Baja California",
+        "requisitos": [
+            "Identificación Oficial",
+        ],
+        "costo": "Sin costo",
+        "tiempo_respuesta": "30 Minutos",
+        "url_oficial": "https://retys.bajacalifornia.gob.mx/Portal/TyS/1238",
+        "fundamento_legal": "Código Nacional de Procedimientos Penales Artículos 17, 18, 109, 110, 259, 261, 262, 272, 275, 277, 366, 368, 369 y 370",
+        "horario": "",
+        "modalidad": "presencial",
+    },
+    "shfp_002": {
+        "nombre": "Constancia de no inhabilitación.",
+        "descripcion": "Trámite a través del cual la Secretaría Anticorrupción y Buen Gobierno acredita que el solicitante no cuenta con inhabilitación vigente para desempeñar un empleo, cargo o comisión.",
+        "dependencia": "Secretaría Anticorrupción y Buen Gobierno",
+        "requisitos": [
+            "Registro Federal de Contribuyentes (RFC)",
+            'Indicar a qué dependencia se debe enviar la constancia (o "a quien corresponda")',
+            "Original y copia de identificación oficial vigente (INE, pasaporte, cédula profesional, cartilla militar, licencia de conducir con CURP)",
+            "Formato para obtener la constancia de no inhabilitación",
+            'Recibo original del pago de derechos (recaudación de rentas, "Farmacias Roma" o bancos)',
+        ],
+        "costo": "COSTO VARIABLE: $132.00 M.N. (actualizándose mensualmente conforme al Transitorio Séptimo de la Ley de Ingresos del Estado de Baja California para el ejercicio fiscal del año 2026)",
+        "tiempo_respuesta": "48 Horas",
+        "url_oficial": "https://retys.bajacalifornia.gob.mx/Portal/TyS/1131",
+        "fundamento_legal": "LEY DE INGRESOS DEL ESTADO DE BAJA CALIFORNIA PARA EL EJERCICIO FISCAL DEL AÑO 2026 18, FRACCIÓN V, INCISO E) DEL CAPÍTULO VII; "
+                            "REGLAMENTO INTERNO DE LA SECRETARÍA ANTICORRUPCIÓN Y BUEN GOBIERNO 32 Y 36 FRACCIÓN XIII",
+        "horario": "",
+        "modalidad": "presencial / en línea",
+    },
+    "sscbc_022": {
+        "nombre": "Expedición de Constancia de Antecedentes Penales",
+        "descripcion": "Documento donde se hace constar que el ciudadano cuenta o no con antecedentes penales de carácter doloso del fuero común en el Estado de Baja California.",
+        "dependencia": "Secretaría de Seguridad Ciudadana del Estado de Baja California",
+        "requisitos": [
+            "Identificación oficial vigente (credencial de elector, pasaporte mexicano, licencia de conducir BC, cartilla del servicio militar nacional liberada, cédula profesional con foto, título profesional)",
+            "Pago de derechos",
+        ],
+        "costo": "COSTO: $284.38 pesos",
+        "tiempo_respuesta": "5 Minutos",
+        "url_oficial": "https://retys.bajacalifornia.gob.mx/Portal/TyS/1618",
+        "fundamento_legal": "Ley Nacional de Ejecución Penal Artículo 27 fracción IV; "
+                            "Ley Orgánica del Poder Ejecutivo del Estado de Baja California Artículo 34 fracción XXXVI; "
+                            "Ley de Ingresos del Estado de Baja California para el ejercicio fiscal del año 2026 Artículo 18, fracción I, inciso H",
+        "horario": "",
+        "modalidad": "presencial / en línea",
+    },
 }
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -342,11 +440,18 @@ TRAMITES_DB: dict[str, dict] = {
 # ─────────────────────────────────────────────────────────────────────────────
 
 HOMOCLAVE_MAP: dict[str, str] = {
+    # Fichas simuladas originales (mantenidas para no romper filas existentes en SQLite)
     "BC-TYS-1650": "inscripcion registro civil",
     "BC-TYS-0661": "licencia de funcionamiento",
     "BC-TYS-0652": "permiso de uso de suelo",
     "BC-TYS-1618": "certificado de estudios",
     "BC-TYS-1582": "antecedentes penales",
+    # Fichas reales RETyS BC
+    "BC-CESPT-041": "cespt_041",
+    "BC-SH-012":    "sh_licencia_conducir",
+    "BC-CEJUM-001": "cejum_001",
+    "BC-SHFP-002":  "shfp_002",
+    "BC-SSCBC-022": "sscbc_022",
 }
 
 # ─────────────────────────────────────────────────────────────────────────────
