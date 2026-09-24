@@ -1,0 +1,324 @@
+{
+  "meta": {
+    "generado": "2026-09-24",
+    "fuente": "RETyS Baja California — portal público (retys.bajacalifornia.gob.mx)",
+    "corpus": "corpus/fichas/ (descargar_fichas.py)",
+    "criterio_seleccion": "Top 5 por dificultad compuesta = (100 − INFLESZ) + 1.5·(% frases >15 palabras) + 0.8·(términos jurídicos) + 0.5·(% palabras 4+ sílabas) + 0.02·(nº palabras); medido con metricas-legibilidad/infliesz.py",
+    "rank_inflesz": "posición por INFLESZ puro (1 = más difícil) dentro de las 14 fichas del corpus",
+    "nota": "texto_original = texto ciudadano verbatim de la ficha (sin navegación ni pie). requisitos/pasos/quien/fundamento son extracción automática best-effort: verificar contra la ficha antes de usarlos en producción."
+  },
+  "fichas": [
+    {
+      "rank_dificultad": 1,
+      "dificultad": 141.4,
+      "rank_inflesz": 14,
+      "id": 1634,
+      "homoclave": "BC-CESPT-041",
+      "nombre": "Registro o Revalidación de Exención de Permiso de Descarga de Aguas Residuales para Comercios y Empresas de Servicios",
+      "organismo": "Comisión Estatal de Servicios Públicos de Tijuana",
+      "url": "https://retys.bajacalifornia.gob.mx/Portal/TyS/1634",
+      "modalidades": [
+        "Presencial"
+      ],
+      "vigencia": "1 año",
+      "costo": "COSTO VARIABLE: Por expedición: $1,7999.46 pesos | Por la revalidación anual: $976.71 pesos | Septiembre 2026 | QUIEN PUEDE REALIZARLO:",
+      "tiempo_resolucion": "30 Días Hábiles",
+      "quien_puede": [
+        "Representante Legal",
+        "Interesado"
+      ],
+      "descripcion": "Solicitar la exención del trámite de permiso de descargas, debido a que no se generan aguas residuales de procesos de producción de bienes o servicios.",
+      "requisitos": [
+        "Original y copia de la Solicitud de Exención de Permiso de Descarga de Aguas Residuales FRM-022 debidamente llenado y firmado.",
+        "Copia de Constancia de Situación Fiscal de la empresa",
+        "Fotografías a color de las áreas del interior de la empresa",
+        "Copia de documentales que acrediten la no generación de descargas de aguas residuales de proceso (manifiestos de disposición de residuos peligrosos, facturas del lavado de ropa de los últimos 6 meses, etc.)."
+      ],
+      "pasos": [
+        "Ve a la Coordinación de Control de Calidad y presenta tu carpeta con los requisitos.",
+        "El personal revisará tus documentos y te informará si falta algo.",
+        "Una vez que los documentos están completos, sellan de revisado el original y la copia de la solicitud de Exención de Permiso de Descarga de Aguas Residuales (FRM-022).",
+        "Dirígete a la Coordinación de Servicios de Saneamiento para que te hagan la ficha de pago.",
+        "Acude al área de cajas con tu ficha de pago, realiza el pago correspondiente y te entregarán tu recibo.",
+        "Lleva tu recibo de pago y entrega el original y la copia de tu solicitud, junto con todos los requisitos, en el área de archivo",
+        "La persona del Área de Archivo certifica de recibido original y copia de la Solicitud de Exención de Permiso de Descarga de Aguas Residuales (FRM-022) y le entrega al solicitante la copia",
+        "La Coordinación de Control de Calidad te contactará para que vayas a recoger tu Exención de Permiso de Descarga de Aguas Residuales."
+      ],
+      "fundamento": [
+        "Ley Que Reglamenta El Servicio De Agua Potable En El Estado De Baja California Artículos 94 y 109.",
+        "Ley de Comisiones Estatales de Servicios Públicos del Estado De Baja California Artículos 1 y 2.",
+        "Ley de Ingresos del Estado de Baja California para el Ejercicio Fiscal del año 2026 Artículo 9."
+      ],
+      "metricas": {
+        "inflesz": 70.3,
+        "nivel": "bastante fácil",
+        "palabras": 1141,
+        "unidades_frase": 92,
+        "palabras_por_frase": 12.4,
+        "pct_frases_mas_15_palabras": 40.2,
+        "pct_palabras_4mas_silabas": 17.1,
+        "terminos_juridicos": 25,
+        "detalle_jerga": {
+          "artículo": 3,
+          "afirmativa": 1,
+          "ficta": 1,
+          "vigencia": 1,
+          "inspección": 1,
+          "modalidad": 3,
+          "requisitos": 10,
+          "solicitante": 3,
+          "interesado": 1,
+          "expedición": 1
+        }
+      },
+      "texto_original": "Presencial\nSolicitar la exención del trámite de permiso de descargas, debido a que no se generan aguas residuales de procesos de producción de bienes o servicios.\nCUANDO REALIZARLO: Cuándo se requiera registrar o revalidar la exención de permiso de descarga de aguas residuales para comercios y empresas de servicios\nQUE SE OBTIENE: Contrato\nVIGENCIA: 1 año\nCOSTO VARIABLE: Por expedición: $1,7999.46 pesos\nPor la revalidación anual: $976.71 pesos\nSeptiembre 2026\nQUIEN PUEDE REALIZARLO:\nRepresentante Legal, Interesado\nAFIRMATIVA FICTA: No\nREQUIERE INSPECCIÓN: No\nTiempo que tiene el organismo para resolver: 30 Días Hábiles\nRegistro o revalidación de exención de permiso de descarga de aguas residuales para comercios y empresas de servicios:\nLey Que Reglamenta El Servicio De Agua Potable En El Estado De Baja California Artículos 94 y 109.\nLey de Comisiones Estatales de Servicios Públicos del Estado De Baja California Artículos 1 y 2.\nLey de Ingresos del Estado de Baja California para el Ejercicio Fiscal del año 2026 Artículo 9.\nRegistri Inicial - Personas Morales\nRegistro Inicial - Personas Físicas\nRegistro de Revalidación\nLas copias deben ser legibles y contener el documento completo. Presentar carpeta con los requisitos, clasificados en 4 secciones.\nRequisitos\nSección 1.- Original y copia de la Solicitud de Exención de Permiso de Descarga de Aguas Residuales FRM-022 debidamente llenado y firmado.\nCopia certificada del Acta Constitutiva de la empresa o copia certificada del Poder Legal vigente que acredite la personalidad del representante legal (si no está en el Acta Constitutiva).\nCopia de Identificación Oficial con fotografía del representante legal, del responsable de la información y de la persona autorizada para recibir notificaciones (puede ser: INE, Pasaporte mexicano, Licencia de conducir, Matrícula consular).\nCopia de Constancia de Situación Fiscal de la empresa\nCopia del Predial\nCopia de croquis de ubicación de la empresa\nSección 2.- Descripción de la actividad de la empresa, especificando el uso del agua en el proceso y si se generan aguas residuales.\nSección 3.- Fotografías a color de las áreas interiores de la empresa, para sustentar la petición y demostrar que no se generan descargas de aguas residuales de proceso.\nSección 4. Documentales que acrediten la no generación de descargas de aguas residuales de proceso (manifiestos de disposición de residuos peligrosos, facturas del lavado de ropa de los últimos 6 meses, etc.).\nPago de derechos\nModalidades\nPresencial\nPasos\nVe a la Coordinación de Control de Calidad y presenta tu carpeta con los requisitos.\nEl personal revisará tus documentos y te informará si falta algo.\nUna vez que los documentos están completos, sellan de revisado el original y la copia de la solicitud de Exención de Permiso de Descarga de Aguas Residuales (FRM-022).\nDirígete a la Coordinación de Servicios de Saneamiento para que te hagan la ficha de pago.\nAcude al área de cajas con tu ficha de pago, realiza el pago correspondiente y te entregarán tu recibo.\nLleva tu recibo de pago y entrega el original y la copia de tu solicitud, junto con todos los requisitos, en el área de archivo\nLa persona del Área de Archivo certifica de recibido original y copia de la Solicitud de Exención de Permiso de Descarga de Aguas Residuales (FRM-022) y le entrega al solicitante la copia\nLa Coordinación de Control de Calidad te contactará para que vayas a recoger tu Exención de Permiso de Descarga de Aguas Residuales.\nLas copias deben ser legibles y contener el documento completo\nRequisitos\nSección 1.- Original y copia de la Solicitud de Exención de Permiso de Descarga de Aguas Residuales FRM-022 debidamente llenado y firmado.\nCopia de Identificación Oficial con fotografía del propietario, del responsable de la información y de la persona autorizada para recibir notificaciones (puede ser: INE, Pasaporte mexicano, Licencia de conducir, Matrícula consular).\nCopia de Constancia de Situación Fiscal de la empresa\nCopia del Predial\nCopia de croquis de ubicación de la empresa\nSección 2.- Descripción de la actividad de la empresa, especificando el uso del agua en el proceso y si se generan aguas residuales\nSección 3.- Fotografías a color de las áreas interiores de la empresa, para sustentar la petición y demostrar que no se generan descargas de aguas residuales de proceso.\nSección 4. Documentales que acrediten la no generación de descargas de aguas residuales de proceso (manifiestos de disposición de residuos peligrosos, facturas del lavado de ropa de los últimos 6 meses, etc.).\nPago de derechos\nModalidades\nPresencial\nPasos\nVe a la Coordinación de Control de Calidad y presenta tu carpeta con los requisitos.\nEl personal revisará tus documentos y te informará si falta algo.\nUna vez que los documentos están completos, sellan de revisado el original y la copia de la solicitud de Exención de Permiso de Descarga de Aguas Residuales (FRM-022).\nDirígete a la Coordinación de Servicios de Saneamiento para que te hagan la ficha de pago.\nAcude al área de cajas con tu ficha de pago, realiza el pago correspondiente y te entregarán tu recibo.\nLleva tu recibo de pago y entrega el original y la copia de tu solicitud, junto con todos los requisitos, en el área de archivo\nLa persona del Área de Archivo certifica de recibido original y copia de la Solicitud de Exención de Permiso de Descarga de Aguas Residuales (FRM-022) y le entrega al solicitante la copia\nLa Coordinación de Control de Calidad te contactará para que vayas a recoger tu Exención de Permiso de Descarga de Aguas Residuales.\nLas copias deben ser legibles y contener el documento completo\nRequisitos\nOriginal y copia de la Solicitud de Exención de Permiso de Descarga de Aguas Residuales FRM-022 debidamente llenado y firmado.\nCopia de Constancia de Situación Fiscal de la empresa\nFotografías a color de las áreas del interior de la empresa\nCopia de documentales que acrediten la no generación de descargas de aguas residuales de proceso (manifiestos de disposición de residuos peligrosos, facturas del lavado de ropa de los últimos 6 meses, etc.).\nPago de derechos\nModalidades\nPresencial\nPasos\nVe a la Coordinación de Control de Calidad y presenta tu carpeta con los requisitos.\nEl personal revisará tus documentos y te informará si falta algo.\nUna vez que los documentos están completos, sellan de revisado el original y la copia de la solicitud de Exención de Permiso de Descarga de Aguas Residuales (FRM-022).\nDirígete a la Coordinación de Servicios de Saneamiento para que te hagan la ficha de pago.\nAcude al área de cajas con tu ficha de pago, realiza el pago correspondiente y te entregarán tu recibo.\nLleva tu recibo de pago y entrega el original y la copia de tu solicitud, junto con todos los requisitos, en el área de archivo\nLa persona del Área de Archivo certifica de recibido original y copia de la Solicitud de Exención de Permiso de Descarga de Aguas Residuales (FRM-022) y le entrega al solicitante la copia\nLa Coordinación de Control de Calidad te contactará para que vayas a recoger tu Exención de Permiso de Descarga de Aguas Residuales.\nTijuana\nCAP Oficinas Centrales\nBlvd. Federico Benítez #4057, Col. 20 de Noviembre, Tijuana, 22430\nCAP Oficinas Centrales"
+    },
+    {
+      "rank_dificultad": 2,
+      "dificultad": 129.0,
+      "rank_inflesz": 12,
+      "id": 661,
+      "homoclave": "BC-SH-012",
+      "nombre": "Expedición de Licencia de Conducir",
+      "organismo": "Secretaría de Hacienda de Baja California",
+      "url": "https://retys.bajacalifornia.gob.mx/Portal/TyS/661",
+      "modalidades": [
+        "Presencial"
+      ],
+      "vigencia": "3 años, 5 años y provisionales 9 meses y 1 año.",
+      "costo": "COSTO VARIABLE: Mes de Septiembre de 2026. | Automovilista 3 años $ 1,120.39 M.N. | 5 años $ 1,493.85 M.N. | Motociclista 3 años $ 1,120.39 M.N.",
+      "tiempo_resolucion": "45 Minutos",
+      "quien_puede": [
+        "Interesado"
+      ],
+      "descripcion": "Colaborar con el ciudadano para cumplir con los requisitos establecidos para que obtenga su licencia de conducir, con la certeza de que se trata de un documento obtenido legalmente y buscando la seguridad en el manejo de vehículos automotor, con la protección individual como de terceros.",
+      "requisitos": [
+        "Cita",
+        "Solicitud del trámite (formato de manifiesto que se captura en la Recaudación de Rentas)",
+        "Presentar en original y copia identificación oficial con fotografía vigente (INE, pasaporte mexicano vigente, cédula profesional, matrícula consular, cartilla militar. (ORIGINAL Y COPIA)",
+        "Presentar en original y copia comprobante de domicilio no mayor a tres meses de antigüedad",
+        "Certificado médico, expedido por institución pública o privada de salud, (original y copia)",
+        "Acreditar no haber sido condenado por sentencia ejecutoriada por manejar vehículo de motor en estado de ebriedad o bajo el influjo de drogas o enervantes en los últimos cinco años (carta de no antecedentes penales)",
+        "Presentar examen antidoping",
+        "Certificado de estudios con fotografía (mínimo contar con certificado de primaria), este requisito solo aplica para licencias tipo B y D",
+        "Presentar y aprobar exámenes teórico y práctico de manejo, con un vehículo apropiado a la licencia solicitada y que cuente con tarjeta de circulación vigente (original y copia)",
+        "Realizar el pago correspondiente. Opciones de pago: efectivo,cheque certificado, tarjeta debito/crédito (excepto tarjetas American Express )"
+      ],
+      "pasos": [
+        "Para agendar una cita accede a https://citas.ebajacalifornia.gob.mx/, selecciona tu municipio de residencia y llena la información requerida, descarga el comprobante de cita para que conozcas el día, la hora y el lugar para realizar el trámite",
+        "Acudir a las oficinas de Recaudación de Rentas del Estado que corresponda con el municipio de su domicilio",
+        "Solicitar trámite presentando documentos en ventanilla",
+        "Toma de datos, las 10 huellas digitales, lectura del iris de ojos y fotografía",
+        "Pasar a área médica en caso de no traer certificado médico",
+        "Presentar exámenes teórico y práctico de manejo, con un vehículo apropiado a la licencia solicitada que cuente con tarjeta de circulación vigente (original y copia).",
+        "Realizar el pago correspondiente. Opciones de pago: efectivo,cheque certificado, tarjeta debito/crédito (excepto tarjetas American Express )",
+        "Recoger licencia de conducir"
+      ],
+      "fundamento": [
+        "Ley de Ingresos del Estado de Baja California para el Ejercicio Fiscal del Año 2025, Artículo 10, Fracción I, Inciso A.",
+        "Ley que Regula los Servicios de Control Vehicular en el Estado de Baja California, Artículos 34 y 36."
+      ],
+      "metricas": {
+        "inflesz": 56.1,
+        "nivel": "normal",
+        "palabras": 1246,
+        "unidades_frase": 123,
+        "palabras_por_frase": 10.1,
+        "pct_frases_mas_15_palabras": 21.1,
+        "pct_palabras_4mas_silabas": 21.8,
+        "terminos_juridicos": 22,
+        "detalle_jerga": {
+          "artículo": 2,
+          "fracción": 1,
+          "afirmativa": 1,
+          "ficta": 1,
+          "vigencia": 1,
+          "inspección": 1,
+          "modalidad": 3,
+          "requisitos": 4,
+          "solicitante": 1,
+          "interesado": 2,
+          "expedición": 5
+        }
+      },
+      "texto_original": "Cita\nPresencial\nExpedir licencia de conducir para manejo de vehículo\nCUANDO REALIZARLO: Cuándo se requiera obtener la Licencia de Conducir.\nQUE SE OBTIENE: La Licencia de Conducir para automóvilista, Chofer A, B, C Y D, motociclista menor de edad (16 y 17 años) y provisionales\nVIGENCIA: 3 años, 5 años y provisionales 9 meses y 1 año.\nCOSTO VARIABLE: Mes de Septiembre de 2026.\nAutomovilista 3 años $ 1,120.39 M.N.\n5 años $ 1,493.85 M.N.\nMotociclista 3 años $ 1,120.39 M.N.\n5 años $ 1,493.85 M.N.\nChofer C 3 años $ 1,278.47 M.N.\n5 años $ 1,704.63 M.N.\nChofer A, B Y D $ 2,108.06 M.N.\nMotociclista y automóvil (de 16 a 18 años) $827.38 M.N.\nLicencia Provisional de Automovilista, Motociclista o Chofer “C”, nacional o extranjero, hasta por 9 meses $959.80 M.N.*Los costos pueden variar dependiendo de la fecha de cumpleaños del solicitante.\nQUIEN PUEDE REALIZARLO:\nInteresado\nAFIRMATIVA FICTA: No\nREQUIERE INSPECCIÓN: No\nTiempo que tiene el organismo para prevenir: 45 Minutos\nLey de Ingresos del Estado de Baja California para el Ejercicio Fiscal del Año 2025, Artículo 10, Fracción I, Inciso A.\nLey que Regula los Servicios de Control Vehicular en el Estado de Baja California, Artículos 34 y 36.\n.\nExpedición de licencias de conducir\nExpedición de licencias para menores de edad.\nExpedición de licencias de conducir para choferes.\nColaborar con el ciudadano para cumplir con los requisitos establecidos para que obtenga su licencia de conducir, con la certeza de que se trata de un documento obtenido legalmente y buscando la seguridad en el manejo de vehículos automotor, con la protección individual como de terceros.\nRequisitos\nCita\nSolicitud del trámite (formato de manifiesto que se captura en la Recaudación de Rentas)\nPresentar en original y copia identificación oficial con fotografía vigente : INE, pasaporte mexicano vigente, cédula profesional, matrícula consular, cartilla militar. (Si el INE presentado cuenta con domicilio actual, no se requiere presentar comprobante de domicilio)\nPresentar en original y copia comprobante de domicilio a nombre del interesado, no mayor a tres meses de antigüedad\nPresentar en original y copia certificado médico, expedido por institución pública o privada de salud,\nPresentar y aprobar exámenes teórico y práctico de manejo, con un vehículo apropiado a la licencia solicitada que cuente con tarjeta de circulación vigente (original y copia)\nRealizar el pago correspondiente. Opciones de pago: efectivo,cheque certificado, tarjeta debito/crédito (excepto tarjetas American Express )\nModalidades\nPresencial\nPasos\nPara agendar una cita accede a https://citas.ebajacalifornia.gob.mx/, selecciona tu municipio de residencia y llena la información requerida, descarga el comprobante de cita para que conozcas el día, la hora y el lugar para realizar el trámite\nAcudir a las oficinas de Recaudación de Rentas del Estado que corresponda con el municipio de su domicilio\nSolicitar trámite presentando documentos en ventanilla\nToma de datos, las 10 huellas digitales y fotografía\nPasar a área médica en caso de no traer certificado médico\nPresentar exámenes teórico y práctico de manejo, con un vehículo apropiado a la licencia solicitada que cuente con tarjeta de circulación vigente (original y copia).\nRealizar el pago correspondiente. Opciones de pago: efectivo,cheque certificado, tarjeta debito/crédito (excepto tarjetas American Express )\nRecoger licencia de conducir\nExpedición de licencias para ciudadanos de 16 a 17 años.\nRequisitos\nCita\nSolicitud del trámite (formato de manifiesto que se captura en la recaudación de rentas)\nAcreditar identidad (presentado en original y copia de alguno de los siguientes documentos: constancia de estudios, pasaporte mexicano vigente, matrícula consular o en caso de ser extranjero forma expedida por el Instituto Nacional de Migración.\nAcreditar edad (haber cumplido 16 o 17 años de edad con los siguientes documentos acta de nacimiento, pasaporte mexicano vigente, curp, matrícula consular o en caso de ser extranjero forma expedida por el Instituto Nacional de Migración.\nPresentar copia de comprobante de domicilio no mayor a tres meses de antigüedad\nCertificado médico, expedido por institución pública o privada de salud, que acredite que es apto para conducir vehículos (original y copia)\nEl padre, madre o tutor debe acompañar al menor de edad y presentar carta responsiva por escrito (original y copia).\nPresentar y aprobar exámenes teórico y práctico de manejo, con un vehículo apropiado a la licencia solicitada y que cuente con tarjeta de circulación vigente (original y copia).\nRealizar el pago correspondiente. Opciones de pago: efectivo,cheque certificado, tarjeta debito/crédito (excepto tarjetas American Express )\nModalidades\nPresencial\nPasos\nPara agendar una cita accede https://citas.ebajacalifornia.gob.mx/, selecciona tu municipio de residencia y llena la información requerida, descarga el comprobante de cita para que conozcas el día, la hora y el lugar para realizar el trámite\nAcudir a las oficinas de Recaudación de Rentas del Estado que corresponda con el municipio de su domicilio\nSolicitar trámite presentando documentos en ventanilla\nToma de datos, las 10 huellas digitales, lectura del iris de ojos y fotografía\nPasar a área médica en caso de no traer certificado médico\nPresentar exámenes teórico y práctico de manejo, con un vehículo apropiado a la licencia solicitada que cuente con tarjeta de circulación vigente (original y copia).\nRealizar el pago correspondiente. Opciones de pago: efectivo,cheque certificado, tarjeta debito/crédito (excepto tarjetas American Express )\nRecoger licencia de conducir\nExpedición de licencias de conducir para choferes.\nRequisitos\nCita\nSolicitud del trámite (formato de manifiesto que se captura en la Recaudación de Rentas)\nPresentar en original y copia identificación oficial con fotografía vigente (INE, pasaporte mexicano vigente, cédula profesional, matrícula consular, cartilla militar. (ORIGINAL Y COPIA)\nPresentar en original y copia comprobante de domicilio no mayor a tres meses de antigüedad\nCertificado médico, expedido por institución pública o privada de salud, (original y copia)\nAcreditar no haber sido condenado por sentencia ejecutoriada por manejar vehículo de motor en estado de ebriedad o bajo el influjo de drogas o enervantes en los últimos cinco años (carta de no antecedentes penales)\nPresentar examen antidoping\nCertificado de estudios con fotografía (mínimo contar con certificado de primaria), este requisito solo aplica para licencias tipo B y D\nPresentar y aprobar exámenes teórico y práctico de manejo, con un vehículo apropiado a la licencia solicitada y que cuente con tarjeta de circulación vigente (original y copia)\nRealizar el pago correspondiente. Opciones de pago: efectivo,cheque certificado, tarjeta debito/crédito (excepto tarjetas American Express )\nModalidades\nPresencial\nPasos\nPara agendar una cita accede a https://citas.ebajacalifornia.gob.mx/, selecciona tu municipio de residencia y llena la información requerida, descarga el comprobante de cita para que conozcas el día, la hora y el lugar para realizar el trámite\nAcudir a las oficinas de Recaudación de Rentas del Estado que corresponda con el municipio de su domicilio\nSolicitar trámite presentando documentos en ventanilla\nToma de datos, las 10 huellas digitales, lectura del iris de ojos y fotografía\nPasar a área médica en caso de no traer certificado médico\nPresentar exámenes teórico y práctico de manejo, con un vehículo apropiado a la licencia solicitada que cuente con tarjeta de circulación vigente (original y copia).\nRealizar el pago correspondiente. Opciones de pago: efectivo,cheque certificado, tarjeta debito/crédito (excepto tarjetas American Express )\nRecoger licencia de conducir\nMexicali\nTijuana\nEnsenada\nTecate\nPlayas de Rosarito\nSan Quintín\nSan Felipe\nSub Recaudación Auxiliar de Rentas Mexicali\nY Calle Dr. Humberto Torres Sanguines #SN, Centro Cívico, Mexicali, 21000\nSub Recaudación Auxiliar de Rentas Guadalupe Victoria\nCalle 8 y Av. Miguel Hidalgo contra esquina con Estación de Bomberos Delg. Guadalupe Victoria #SN, Guadalupe Victoria KM 43, Mexicali, 21720\nSub Recaudación de Rentas Ciudad Morelos\nAv. Morelos y Leyes de Reforma #512, Ciudad Morelos, Mexicali, 21960\nSub Recaudación Auxiliar Gonzalez Ortega\nCalle 4ta, esquina con rio bravo. #311, Gonzalez Ortega, Mexicali, 21397\nVolanta CESPM Calle Novena\nCalle Novena y Palmira #SN, Calles (Poblado Compuertas), Mexicali, 21226\nSub Recaudación Auxiliar de Rentas Mexicali"
+    },
+    {
+      "rank_dificultad": 3,
+      "dificultad": 123.2,
+      "rank_inflesz": 1,
+      "id": 1238,
+      "homoclave": "BC-CEJUM-001",
+      "nombre": "Atención Integral a Mujeres Víctimas de Violencia",
+      "organismo": "Centro de Justicia para las Mujeres del Estado de Baja California",
+      "url": "https://retys.bajacalifornia.gob.mx/Portal/TyS/1238",
+      "modalidades": [
+        "Presencial"
+      ],
+      "vigencia": "Sin vigencia",
+      "costo": "Sin costo",
+      "tiempo_resolucion": "30 Minutos",
+      "quien_puede": [
+        "Interesado",
+        "Tutor"
+      ],
+      "descripcion": "Asesoría psicológica, asesoría legal, trabajo social, atención médica preventiva, ludoteca, estancia transitoria, área de empoderamiento y prevención.",
+      "requisitos": [
+        "Identificación Oficial"
+      ],
+      "pasos": [
+        "Asistir al centro de justicia",
+        "Entrevista inicial",
+        "Evaluación del riesgo",
+        "Valoración y atención integral",
+        "Canalización de casos",
+        "Agendar próxima cita"
+      ],
+      "fundamento": [
+        "Código Nacional de Procedimientos Penales Artículos 17, 18, 109, 110, 259, 261, 262, 272, 275, 277, 366, 368, 369 y 370"
+      ],
+      "metricas": {
+        "inflesz": 12.8,
+        "nivel": "muy difícil",
+        "palabras": 117,
+        "unidades_frase": 29,
+        "palabras_por_frase": 4.0,
+        "pct_frases_mas_15_palabras": 6.9,
+        "pct_palabras_4mas_silabas": 29.1,
+        "terminos_juridicos": 11,
+        "detalle_jerga": {
+          "artículo": 1,
+          "afirmativa": 1,
+          "ficta": 1,
+          "jurídico": 1,
+          "vigencia": 1,
+          "inspección": 1,
+          "canalización": 1,
+          "modalidad": 1,
+          "requisitos": 1,
+          "interesado": 2
+        }
+      },
+      "texto_original": "Presencial\nAsesoría psicológica, asesoría legal, trabajo social, atención médica preventiva, ludoteca, estancia transitoria, área de empoderamiento y prevención.\nCUANDO REALIZARLO: Cuando la persona interesadoa lo requiera\nQUE SE OBTIENE: Acompañamiento jurídico, atención psicológica y apoyo de trabajo social\nSIN VIGENCIA\nSIN COSTO\nQUIEN PUEDE REALIZARLO:\nInteresado, Tutor\nAFIRMATIVA FICTA: No\nREQUIERE INSPECCIÓN: No\nTiempo que tiene el organismo para resolver: 30 Minutos\nCódigo Nacional de Procedimientos Penales Artículos 17, 18, 109, 110, 259, 261, 262, 272, 275, 277, 366, 368, 369 y 370\nMujer víctima de violencia\nViolencia contra la mujer física, patrimonial, económica, sexual\nRequisitos\nIdentificación Oficial\nModalidades\nPresencial\nPasos\nAsistir al centro de justicia\nEntrevista inicial\nEvaluación del riesgo\nValoración y atención integral\nCanalización de casos\nAgendar próxima cita\nTijuana\nCoordinación Operativa\nAvenida Moctezuma #1, Residencial de Cortez, Tijuana, 22190\nCoordinación Operativa"
+    },
+    {
+      "rank_dificultad": 4,
+      "dificultad": 116.1,
+      "rank_inflesz": 10,
+      "id": 1131,
+      "homoclave": "BC-SHFP-002",
+      "nombre": "Constancia de no inhabilitación.",
+      "organismo": "Secretaría Anticorrupción y Buen Gobierno",
+      "url": "https://retys.bajacalifornia.gob.mx/Portal/TyS/1131",
+      "modalidades": [
+        "En línea",
+        "Presencial"
+      ],
+      "vigencia": "90 DÍAS NATURALES.",
+      "costo": "COSTO VARIABLE: $132.00 M.N. (Actualizándose mensualmente, de conformidad al Transitorio Séptimo de la Ley de Ingresos del Estado de Baja California para el ejercicio fiscal del año 2026). | QUIEN PUEDE REALIZARLO: | Representante Legal, Interesado | AFIRMATIVA FICTA: No",
+      "tiempo_resolucion": "48 Horas",
+      "quien_puede": [
+        "Representante Legal",
+        "Interesado"
+      ],
+      "descripcion": "Trámite a través del cual la Secretaría Anticorrupción y Buen Gobierno, acredita que el solicitante, no cuenta con inhabilitación vigente, para desempeñar un empleo, cargo o comisión.",
+      "requisitos": [
+        "Registro Federal de Contribuyentes (RFC)",
+        "Indicar a qué dependencia se debe enviar la constancia, o si no lo sabes, se hará “a quien corresponda”.",
+        "Original y copia de una identificación oficial vigente. - Credencial para votar (INE) - Pasaporte mexicano - Cédula profesional (con foto) - Cartilla militar - Licencia de conducir (junto con CURP o constancia de residencia).",
+        "Formato para obtener la constancia de no inhabilitación.",
+        "Recibo original del pago de derechos (se puede pagar en recaudación de rentas, \"Farmacias Roma\", o bancos)."
+      ],
+      "pasos": [
+        "Acudir a solicitar el trámite en la Secretaría Anticorrupción y Buen Gobierno",
+        "Presentar los requisitos establecidos.",
+        "Recibir constancia de no inhabilitación (tiempo estimado: 10 minutos)."
+      ],
+      "fundamento": [
+        "LEY DE INGRESOS DEL ESTADO DE BAJA CALIFORNIA PARA EL EJERCICIO FISCAL DEL AÑO 2026 18, FRACCIÓN V, INCISO E) DEL CAPÍTULO VII",
+        "REGLAMENTO INTERNO DE LA SECRETARÍA ANTICORRUPCIÓN Y BUEN GOBIERNO 32 Y 36 FRACCIÓN XIII"
+      ],
+      "metricas": {
+        "inflesz": 55.4,
+        "nivel": "normal",
+        "palabras": 605,
+        "unidades_frase": 68,
+        "palabras_por_frase": 8.9,
+        "pct_frases_mas_15_palabras": 25.0,
+        "pct_palabras_4mas_silabas": 19.8,
+        "terminos_juridicos": 15,
+        "detalle_jerga": {
+          "fracción": 2,
+          "afirmativa": 1,
+          "ficta": 1,
+          "vigencia": 1,
+          "inspección": 1,
+          "modalidad": 2,
+          "requisitos": 4,
+          "solicitante": 1,
+          "interesado": 1,
+          "reglamento": 1
+        }
+      },
+      "texto_original": "En línea\nPresencial\nTrámite a través del cual la Secretaría Anticorrupción y Buen Gobierno, acredita que el solicitante, no cuenta con inhabilitación vigente, para desempeñar un empleo, cargo o comisión.\nCUANDO REALIZARLO: Cuando la persona potencial, requiera hacer constar que no se encuentra inhabilitado para desempeñar un empleo, cargo o comisión.\nQUE SE OBTIENE: Constancia de no inhabilitación\nVIGENCIA: 90 DÍAS NATURALES.\nCOSTO VARIABLE: $132.00 M.N. (Actualizándose mensualmente, de conformidad al Transitorio Séptimo de la Ley de Ingresos del Estado de Baja California para el ejercicio fiscal del año 2026).\nQUIEN PUEDE REALIZARLO:\nRepresentante Legal, Interesado\nAFIRMATIVA FICTA: No\nREQUIERE INSPECCIÓN: No\nTiempo que tiene el organismo para resolver: 48 Horas\nLEY DE INGRESOS DEL ESTADO DE BAJA CALIFORNIA PARA EL EJERCICIO FISCAL DEL AÑO 2026 18, FRACCIÓN V, INCISO E) DEL CAPÍTULO VII\nREGLAMENTO INTERNO DE LA SECRETARÍA ANTICORRUPCIÓN Y BUEN GOBIERNO 32 Y 36 FRACCIÓN XIII\nRepresentante legal\nPersona física\nCuando la persona interesada se encuentra imposibilitado de acudir personalmente a la oficina a realizar el trámite.\nRequisitos\nRegistro Federal de Contribuyentes (RFC)\nIndicar a qué dependencia se debe enviar la constancia, o si no lo sabes, se hará “a quien corresponda”.\nOriginal y copia de una identificación oficial vigente. - Credencial para votar - Pasaporte mexicano - Cédula profesional (con foto) - Cartilla militar - Licencia de conducir (junto con CURP o constancia de residencia).\nFormato para obtener la constancia de no inhabilitación.\nRecibo original del pago de derechos (se puede pagar en recaudación de rentas, o mediante pago referenciado en \"Farmacias Roma\" o bancos).\nCarta poder, que debe incluir: - Nombre completo del apoderado - Indicar que el poder es para “trámite y recepción de constancia de no inhabilitación” - Dirigido a la Secretaría Anticorrupción y Buen Gobierno- Firmada por el otorgante y dos testigos.\nCopia de la identificación del otorgante y tanto el original como copia de la identificación del apoderado.\nModalidades\nPresencial\nPasos\nAcudir a solicitar el trámite en la Secretaría Anticorrupción y Buen Gobierno\nPresentar los requisitos establecidos.\nRecibir constancia de no inhabilitación (tiempo estimado: 10 minutos).\nCuando la persona potencial, requiera hacer constar que no se encuentra inhabilitado para desempeñar un empleo, cargo o comisión, en los 3 órdenes de gobierno.\nRequisitos\nRegistro Federal de Contribuyentes (RFC)\nIndicar a qué dependencia se debe enviar la constancia, o si no lo sabes, se hará “a quien corresponda”.\nOriginal y copia de una identificación oficial vigente. - Credencial para votar (INE) - Pasaporte mexicano - Cédula profesional (con foto) - Cartilla militar - Licencia de conducir (junto con CURP o constancia de residencia).\nFormato para obtener la constancia de no inhabilitación.\nRecibo original del pago de derechos (se puede pagar en recaudación de rentas, \"Farmacias Roma\", o bancos).\nModalidades\nEn línea\nPresencial\nPasos\nDar clic en “iniciar trámite”.\nLlenar la información requerida\nRealizar pago en línea, haciendo clic en el botón “pago en línea”, e introducir los datos de su tarjeta de débito o crédito.\nImprimir su constancia de no inhabilitación, (tiempo estimado: 48 horas, dependiendo de la conciliación bancaria correspondiente).\nNota: Si no puedes obtener la constancia después de pagar en línea, ve a la oficina de la Secretaría Anticorrupción y Buen Gobierno de tu municipio con tu identificación y llena el formulario. Ellos revisarán tu trámite y te entregarán la constancia si todo está en orden.\nPasos\nAcudir a solicitar el trámite en la Secretaría Anticorrupción y Buen Gobierno\nPresentar los requisitos establecidos.\nRecibir constancia de no inhabilitación (tiempo estimado: 10 minutos).\nMexicali\nTijuana\nEnsenada\nTecate\nPlayas de Rosarito\nSan Quintín\nDirección Jurídica de Responsabilidades y Situación Patrimonial\nAv. Álvaro Obregón y Calle México #599, Sección Primera, Mexicali, 21100\nDirección Jurídica de Responsabilidades y Situación Patrimonial\nCalz. Independencia y Paseo de los Héroes #994, CENTRO CIVICO, Mexicali, 21000\nDirección Jurídica de Responsabilidades y Situación Patrimonial"
+    },
+    {
+      "rank_dificultad": 5,
+      "dificultad": 100.1,
+      "rank_inflesz": 8,
+      "id": 1618,
+      "homoclave": "BC-SSCBC-022",
+      "nombre": "Expedición de Constancia de Antecedentes Penales",
+      "organismo": "Secretaría de Seguridad Ciudadana del Estado de Baja California",
+      "url": "https://retys.bajacalifornia.gob.mx/Portal/TyS/1618",
+      "modalidades": [
+        "En línea",
+        "Presencial"
+      ],
+      "vigencia": "3 MESES",
+      "costo": "COSTO: $ 284.38 pesos | QUIEN PUEDE REALIZARLO: | Interesado | AFIRMATIVA FICTA: No",
+      "tiempo_resolucion": "5 Minutos",
+      "quien_puede": [
+        "Interesado"
+      ],
+      "descripcion": "Documento donde se hace constar que el ciudadano cuenta o no, con antecedentes penales de carácter doloso del fuero común en el Estado de Baja California.",
+      "requisitos": [
+        "Identificación oficial vigente (credencial de elector, pasaporte mexicano, licencia de conducir del Estado de Baja California, cartilla del servicio militar nacional liberada, cédula profesional con foto, título profesional)"
+      ],
+      "pasos": [
+        "Acudir a la dependencia o módulo",
+        "Presentar identificación oficial vigente",
+        "Realizar el pago correspondiente (recaudación rentas del estado, banco, internet)",
+        "Entrega de constancia de antecedentes penales"
+      ],
+      "fundamento": [
+        "Ley Nacional de Ejecución Penal Artículo 27 fracción IV",
+        "Ley Orgánica del Poder Ejecutivo del Estado de Baja California Artículo 34 fracción XXXVI",
+        "Ley de Ingresos del Estado de Baja California para el ejercicio fiscal del año 2026 Artículo 18, fracción I, inciso H"
+      ],
+      "metricas": {
+        "inflesz": 54.8,
+        "nivel": "algo difícil",
+        "palabras": 425,
+        "unidades_frase": 54,
+        "palabras_por_frase": 7.9,
+        "pct_frases_mas_15_palabras": 16.7,
+        "pct_palabras_4mas_silabas": 17.2,
+        "terminos_juridicos": 16,
+        "detalle_jerga": {
+          "artículo": 3,
+          "fracción": 3,
+          "afirmativa": 1,
+          "ficta": 1,
+          "vigencia": 1,
+          "inspección": 1,
+          "modalidad": 1,
+          "requisitos": 2,
+          "solicitante": 2,
+          "interesado": 1
+        }
+      },
+      "texto_original": "En línea\nPresencial\nDocumento donde se hace constar que el ciudadano cuenta o no, con antecedentes penales de carácter doloso del fuero común en el Estado de Baja California.\nCUANDO REALIZARLO: Cuando se requiera, para trámite laboral, personal, migratorio, entre otros\nQUE SE OBTIENE: Constancia de Antecedentes Penales\nVIGENCIA: 3 MESES\nCOSTO: $ 284.38 pesos\nQUIEN PUEDE REALIZARLO:\nInteresado\nAFIRMATIVA FICTA: No\nREQUIERE INSPECCIÓN: No\nTiempo que tiene el organismo para resolver: 5 Minutos\nLey Nacional de Ejecución Penal Artículo 27 fracción IV\nLey Orgánica del Poder Ejecutivo del Estado de Baja California Artículo 34 fracción XXXVI\nLey de Ingresos del Estado de Baja California para el ejercicio fiscal del año 2026 Artículo 18, fracción I, inciso H\nCiudadanía en General\nRequisitos para obtener la Constancia de no antecedentes penales\nRequisitos\nIdentificación oficial vigente (credencial de elector, pasaporte mexicano, licencia de conducir del Estado de Baja California, cartilla del servicio militar nacional liberada, cédula profesional con foto, título profesional)\nPago de derechos\nModalidades\nEn línea\nPresencial\nPasos\nPara trámite en línea ingresar a la página https://tramites.ebajacalifornia.gob.mx/ventanillaunica/tramites/antecedentespenales/constancia-antecedentes-penales o dar click en el botón \"iniciar trámite\" ubicado en la parte inferior derecha\nLlenar los campos con los datos del solicitante\nSubir fotografía del solicitante de cara completa, fondo blanco, cara descubierta, a color, sin retoque, sin lentes y no mayor a 6 meses, en caso contrario el trámite será rechazado.\nSubir fotografía de la parte frontal de la identificación en fondo blanco, vigente para cotejo del trámite, en caso contrario el trámite será rechazado.\nPagar los derechos, en el caso de realizar el pago en ventanilla bancaria se verá reflejado en el sistema de CONSULTA DE PAGO DE DERECHOS 48 horas después de su pago\nEnvío de la constancia al correo electrónico registrado, dentro de 3 días hábiles de haber realizado el trámite, en caso de ser aprobado.\nLos trámites realizados en fin de semana serán atendidos de lunes a viernes\nPasos\nAcudir a la dependencia o módulo\nPresentar identificación oficial vigente\nRealizar el pago correspondiente (recaudación rentas del estado, banco, internet)\nEntrega de constancia de antecedentes penales\nMexicali\nTijuana\nEnsenada\nTecate\nPlayas de Rosarito\nSan Quintín\nSan Felipe\nCentro Comercial Plaza Fiesta\nAv. Paseo de los Héroes #1C, Centro Cívico, Mexicali, 21100\nRecaudación de Rentas\nCalz. Independencia 944, Centro Cívico #944, Centro Cívico, Mexicali, 21000\nRecaudación de Rentas Guadalupe Victoria\nAvenida Miguel Hidalgo y Costilla y Calle Octava #S/N, Ciudad Guadalupe Victoria (KM 43), Mexicali, 21720\nSub-recaudación Auxiliar de Rentas del Estado Ciudad Morelos\nAvenida Leyes de Reforma y José María Morelos y Pavón #101, Ciudad Morelos, Mexicali, 21966\nCentro Comercial Plaza Fiesta"
+    }
+  ]
+}

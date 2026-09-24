@@ -440,13 +440,7 @@ TRAMITES_DB: dict[str, dict] = {
 # ─────────────────────────────────────────────────────────────────────────────
 
 HOMOCLAVE_MAP: dict[str, str] = {
-    # Fichas simuladas originales (mantenidas para no romper filas existentes en SQLite)
-    "BC-TYS-1650": "inscripcion registro civil",
-    "BC-TYS-0661": "licencia de funcionamiento",
-    "BC-TYS-0652": "permiso de uso de suelo",
-    "BC-TYS-1618": "certificado de estudios",
-    "BC-TYS-1582": "antecedentes penales",
-    # Fichas reales RETyS BC
+    # Fichas reales RETyS BC (fichas-dificiles.json) — únicas que aparecen en el panel de admin
     "BC-CESPT-041": "cespt_041",
     "BC-SH-012":    "sh_licencia_conducir",
     "BC-CEJUM-001": "cejum_001",

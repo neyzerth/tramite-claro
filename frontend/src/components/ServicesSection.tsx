@@ -47,40 +47,40 @@ interface TramiteCard {
 
 const tramitesDestacados: TramiteCard[] = [
   {
-    id: 1650,
-    dependencia: 'Registro Civil',
-    titulo: 'Solicitud de Inscripción al Registro Civil',
-    descripcion: 'Registro de nacimientos, matrimonios, defunciones y otros actos del estado civil de las personas.',
+    id: 1634,
+    dependencia: 'Comisión Estatal de Servicios Públicos de Tijuana',
+    titulo: 'Registro o Revalidación de Exención de Permiso de Descarga de Aguas Residuales',
+    descripcion: 'Para comercios y empresas de servicios que no generan aguas residuales de procesos productivos.',
   },
   {
     id: 661,
-    dependencia: 'Licencias y Permisos',
-    titulo: 'Licencia de Funcionamiento',
-    descripcion: 'Obtén el permiso para operar un establecimiento comercial, industrial o de servicios en el estado.',
+    dependencia: 'Secretaría de Hacienda de Baja California',
+    titulo: 'Expedición de Licencia de Conducir',
+    descripcion: 'Obtén tu licencia de conducir para automovilista, motociclista, chofer o menor de edad.',
   },
   {
-    id: 652,
-    dependencia: 'Desarrollo Urbano',
-    titulo: 'Permiso de Uso de Suelo',
-    descripcion: 'Autorización para el uso o cambio de uso de suelo de un predio conforme a los planes de desarrollo urbano.',
+    id: 1238,
+    dependencia: 'Centro de Justicia para las Mujeres',
+    titulo: 'Atención Integral a Mujeres Víctimas de Violencia',
+    descripcion: 'Asesoría psicológica, legal, trabajo social, atención médica y acompañamiento integral. Sin costo.',
+  },
+  {
+    id: 1131,
+    dependencia: 'Secretaría Anticorrupción y Buen Gobierno',
+    titulo: 'Constancia de no inhabilitación',
+    descripcion: 'Acredita que no cuentas con inhabilitación vigente para desempeñar un empleo, cargo o comisión.',
   },
   {
     id: 1618,
-    dependencia: 'Secretaría de Educación',
-    titulo: 'Certificado de Estudios',
-    descripcion: 'Solicita la expedición de certificados y constancias de estudios de nivel básico, medio y superior.',
-  },
-  {
-    id: 1582,
-    dependencia: 'Fiscalía General del Estado',
-    titulo: 'Constancia de No Antecedentes Penales',
-    descripcion: 'Documento oficial que certifica que el solicitante no cuenta con antecedentes penales en el estado.',
+    dependencia: 'Secretaría de Seguridad Ciudadana',
+    titulo: 'Expedición de Constancia de Antecedentes Penales',
+    descripcion: 'Documento que hace constar si tienes o no antecedentes penales del fuero común en Baja California.',
   },
   {
     id: 0,
-    dependencia: 'Secretaría de Finanzas',
-    titulo: 'Pago de Derechos y Contribuciones',
-    descripcion: 'Realiza el pago de derechos, contribuciones y aprovechamientos del estado a través del portal oficial.',
+    dependencia: 'RETyS Baja California',
+    titulo: 'Más trámites disponibles',
+    descripcion: 'Consulta el catálogo completo del Registro Estatal de Trámites y Servicios de Baja California.',
   },
 ]
 
