@@ -224,6 +224,129 @@ TRAMITES_DB: dict[str, dict] = {
         "horario": "Lunes a viernes de 8:00 a 15:00 horas",
         "modalidad": "presencial",
     },
+    "inscripcion registro civil": {
+        "nombre": "Solicitud de Inscripción al Registro Civil",
+        "descripcion": (
+            "Trámite mediante el cual los ciudadanos solicitan el registro de actos del "
+            "estado civil, tales como nacimientos, matrimonios, divorcios y defunciones. "
+            "El Registro Civil acredita mediante documentos la situación jurídica de las "
+            "personas físicas en el Estado de Baja California."
+        ),
+        "dependencia": "Registro Civil del Estado de Baja California — Dirección del Registro Civil",
+        "requisitos": [
+            "Solicitud debidamente llenada y firmada (formato oficial)",
+            "Identificación oficial vigente con fotografía (INE, pasaporte, cédula profesional)",
+            "CURP del solicitante",
+            "Comprobante de domicilio no mayor a 3 meses",
+            "Documentos que acrediten el acto a registrar (acta hospitalaria, acta eclesiástica, etc.) "
+            "según el tipo de inscripción",
+            "Pago de derechos correspondiente",
+        ],
+        "costo": "Gratuito (primera acta de nacimiento); $50 pesos copias adicionales; "
+                 "$200 pesos acta de matrimonio",
+        "tiempo_respuesta": "1 a 3 días hábiles",
+        "url_oficial": "https://retys.bajacalifornia.gob.mx/Portal/TyS/1650",
+        "fundamento_legal": "Ley del Registro Civil del Estado de Baja California; "
+                            "Código Civil del Estado de Baja California",
+        "horario": "Lunes a viernes de 8:00 a 15:00 horas",
+        "modalidad": "presencial",
+    },
+    "licencia de funcionamiento": {
+        "nombre": "Licencia de Funcionamiento",
+        "descripcion": (
+            "Autorización que otorga el gobierno estatal a personas físicas o morales para "
+            "operar legalmente un establecimiento comercial, industrial o de servicios dentro "
+            "del territorio del Estado de Baja California. Garantiza que el establecimiento "
+            "cumple con los requisitos de seguridad, sanidad, uso de suelo y demás "
+            "disposiciones legales aplicables."
+        ),
+        "dependencia": "Dirección de Licencias y Permisos — Subdirección de Permisos Comerciales",
+        "requisitos": [
+            "Solicitud oficial debidamente llenada y firmada",
+            "Identificación oficial vigente del propietario o representante legal",
+            "RFC y CURP del solicitante",
+            "Acta constitutiva (para personas morales) y poder notarial del representante",
+            "Comprobante de domicilio del establecimiento no mayor a 3 meses",
+            "Permiso de uso de suelo vigente compatible con la actividad",
+            "Dictamen de protección civil favorable",
+            "Pago de derechos correspondiente al giro del negocio",
+        ],
+        "costo": "$800 pesos (giro de bajo impacto) / $1,500 pesos (mediano impacto) / "
+                 "$3,000 pesos (alto impacto); renovación anual: 50% del costo original",
+        "tiempo_respuesta": "5 a 10 días hábiles",
+        "url_oficial": "https://retys.bajacalifornia.gob.mx/Portal/TyS/661",
+        "fundamento_legal": "Ley de Establecimientos Mercantiles del Estado de Baja California; "
+                            "Reglamento de Licencias de Funcionamiento",
+        "horario": "Lunes a viernes de 8:00 a 15:00 horas",
+        "modalidad": "presencial",
+    },
+    "permiso de uso de suelo": {
+        "nombre": "Permiso de Uso de Suelo",
+        "descripcion": (
+            "Autorización que emite la Secretaría de Desarrollo Urbano mediante la cual se "
+            "permite o condiciona el uso o el cambio de uso del suelo de un predio, conforme "
+            "a los planes y programas de desarrollo urbano vigentes. Es indispensable para el "
+            "establecimiento de negocios, construcciones nuevas y cambios de giro."
+        ),
+        "dependencia": "Secretaría de Desarrollo Urbano y Sustentabilidad — Dirección de Planeación Urbana",
+        "requisitos": [
+            "Solicitud oficial con datos del predio y actividad solicitada",
+            "Identificación oficial del propietario o representante legal",
+            "Copia del título de propiedad o contrato de arrendamiento notariado",
+            "Croquis de localización y plano del predio (acotado, con colindancias)",
+            "Boleta predial al corriente de pago",
+            "Descripción detallada de la actividad o giro que se pretende desarrollar",
+            "Pago de derechos de revisión",
+        ],
+        "costo": "$600 pesos (revisión y dictamen); $2,500 pesos (cambio habitacional a comercial); "
+                 "$5,000 pesos (cambio comercial a industrial)",
+        "tiempo_respuesta": "10 a 20 días hábiles",
+        "url_oficial": "https://retys.bajacalifornia.gob.mx/Portal/TyS/652",
+        "fundamento_legal": "Ley de Desarrollo Urbano del Estado de Baja California; "
+                            "Programa Estatal de Desarrollo Urbano",
+        "horario": "Lunes a viernes de 8:00 a 15:00 horas",
+        "modalidad": "presencial",
+    },
+    "certificado de estudios": {
+        "nombre": "Expedición de Certificado de Estudios",
+        "descripcion": (
+            "Trámite mediante el cual la Secretaría de Educación Pública del Estado expide el "
+            "certificado oficial que acredita la conclusión de un nivel educativo (preescolar, "
+            "primaria, secundaria, bachillerato o equivalente) en una institución pública del "
+            "estado. Tiene validez oficial para trámites laborales, académicos y migratorios."
+        ),
+        "dependencia": "Secretaría de Educación Pública del Estado de Baja California (SEPBC) — "
+                       "Dirección de Control Escolar",
+        "requisitos": [
+            "Solicitud oficial firmada por el interesado o tutor (menores de edad)",
+            "Identificación oficial vigente con fotografía",
+            "CURP",
+            "Acta de nacimiento",
+            "Boletas o calificaciones de todos los grados del nivel educativo correspondiente",
+            "Nombre y clave del centro educativo donde se realizaron los estudios",
+            "Pago de derechos (aplica para duplicados y expediciones posteriores a 1 año de egreso)",
+        ],
+        "costo": "Gratuito (primera expedición, recién egresado); $350 pesos (duplicado por extravío); "
+                 "$500 pesos (apostille para uso en el extranjero)",
+        "tiempo_respuesta": "5 a 15 días hábiles",
+        "url_oficial": "https://retys.bajacalifornia.gob.mx/Portal/TyS/1618",
+        "fundamento_legal": "Ley General de Educación; Ley de Educación del Estado de Baja California; "
+                            "Acuerdo Secretarial 286",
+        "horario": "Lunes a viernes de 8:00 a 15:00 horas",
+        "modalidad": "presencial",
+    },
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Mapping homoclave → clave TRAMITES_DB  (usado por los endpoints de admin)
+# ─────────────────────────────────────────────────────────────────────────────
+
+HOMOCLAVE_MAP: dict[str, str] = {
+    "BC-TYS-1650": "inscripcion registro civil",
+    "BC-TYS-0661": "licencia de funcionamiento",
+    "BC-TYS-0652": "permiso de uso de suelo",
+    "BC-TYS-1618": "certificado de estudios",
+    "BC-TYS-1582": "antecedentes penales",
 }
 
 # ─────────────────────────────────────────────────────────────────────────────

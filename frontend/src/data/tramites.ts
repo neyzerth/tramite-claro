@@ -19,6 +19,7 @@ export interface Costo {
 
 export interface Tramite {
   id: number
+  homoclave: string
   titulo: string
   dependencia: string
   area: string
@@ -41,6 +42,7 @@ export interface Tramite {
 const tramites: Tramite[] = [
   {
     id: 1650,
+    homoclave: 'BC-TYS-1650',
     titulo: 'Solicitud de Inscripción al Registro Civil',
     dependencia: 'Registro Civil del Estado de Baja California',
     area: 'Dirección del Registro Civil',
@@ -104,6 +106,7 @@ const tramites: Tramite[] = [
   },
   {
     id: 661,
+    homoclave: 'BC-TYS-0661',
     titulo: 'Licencia de Funcionamiento',
     dependencia: 'Dirección de Licencias y Permisos',
     area: 'Subdirección de Permisos Comerciales',
@@ -174,6 +177,7 @@ const tramites: Tramite[] = [
   },
   {
     id: 652,
+    homoclave: 'BC-TYS-0652',
     titulo: 'Permiso de Uso de Suelo',
     dependencia: 'Secretaría de Desarrollo Urbano y Sustentabilidad',
     area: 'Dirección de Planeación Urbana',
@@ -232,6 +236,7 @@ const tramites: Tramite[] = [
   },
   {
     id: 1618,
+    homoclave: 'BC-TYS-1618',
     titulo: 'Expedición de Certificado de Estudios',
     dependencia: 'Secretaría de Educación Pública del Estado de Baja California (SEPBC)',
     area: 'Dirección de Control Escolar',
@@ -290,6 +295,7 @@ const tramites: Tramite[] = [
   },
   {
     id: 1582,
+    homoclave: 'BC-TYS-1582',
     titulo: 'Constancia de No Antecedentes Penales',
     dependencia: 'Fiscalía General del Estado de Baja California',
     area: 'Dirección de Antecedentes Penales',
