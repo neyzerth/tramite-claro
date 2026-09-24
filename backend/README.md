@@ -8,7 +8,8 @@ Asistente ciudadano accesible para trámites del **Registro Estatal de Trámites
 
 | Módulo | Descripción |
 |---|---|
-| `skill_retys.py` | Skill (tool) de consulta al catálogo RETyS BC |
+| `skill_retys.py` | Skill (tool) de consulta al catálogo RETyS BC — RAG-first, fallback a TRAMITES_DB |
+| `rag_service.py` | Pipeline RAG: indexación y búsqueda semántica sobre fichas RETyS |
 | `lectura_facil.py` | Transformador de texto a norma Lectura Fácil |
 | `agent_service.py` | Agente orquestador con loop ReAct + tool calling |
 | `stt_service.py` | Watson STT: grabación y transcripción de voz |
@@ -82,6 +83,29 @@ python descargar_fichas.py
 
 # Catálogo completo (730 fichas, tarda varios minutos)
 python descargar_fichas.py --todas
+```
+
+> **Primer arranque con RAG:** Las fichas se deben descargar **antes** de levantar el servidor.
+> El servidor construye el índice vectorial automáticamente en el primer arranque.
+> En arranques posteriores el índice ya existe y se omite la construcción.
+
+### Primer arranque completo (paso a paso)
+
+```bash
+# 1. Descargar fichas del RETyS (genera fichas/*.txt)
+python descargar_fichas.py
+
+# 2. Levantar el servidor (construye el índice RAG automáticamente)
+uvicorn api.main:app --reload
+```
+
+Al arrancar verás en la terminal:
+```
+[RAG] Verificando índice vectorial...
+[RAG] Construyendo índice de fichas RETyS (10 fichas)...
+[RAG] Indexando: Expedición de Licencia de Conducir
+...
+[RAG] Índice construido con 10 fichas. Listo.
 ```
 
 ---

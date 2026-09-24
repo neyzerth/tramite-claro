@@ -10,3 +10,8 @@ backend/documentos/*
 backend/audios/*
 !backend/audios/.gitkeep
 backend/tramites.db
+
+fichas/
+backend/vectorstore/
+fichas_index.json
+retys_catalogo.json

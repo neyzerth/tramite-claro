@@ -22,6 +22,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from agent_service import AgenteRETyS
 from database import create_db_and_tables
+import rag_service
 from api.routes.tramites import router as router_tramites
 from api.routes.accesibilidad import router as router_accesibilidad
 from api.routes.admin import router as router_admin
@@ -34,6 +35,14 @@ from api.routes.admin import router as router_admin
 async def lifespan(app: FastAPI):
     """Crea el agente al arrancar y lo destruye al cerrar."""
     create_db_and_tables()
+
+    # Construir el índice RAG si no existe (solo en el primer arranque).
+    print("[RAG] Verificando índice vectorial...")
+    if not rag_service.indice_existe():
+        rag_service.construir_indice()
+    else:
+        print("[RAG] Índice ya existe, omitiendo construcción.")
+
     app.state.agente = AgenteRETyS()
     yield
     # Cleanup (no hay recursos que liberar explícitamente por ahora)

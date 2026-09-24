@@ -5,6 +5,7 @@ Define la TOOL_DEFINITION compatible con el formato tool calling de
 watsonx.ai / OpenAI, la base de datos de trámites y la lógica de búsqueda.
 """
 import json
+import rag_service
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Definición de la tool para watsonx.ai / OpenAI function calling
@@ -394,6 +395,10 @@ def ejecutar_skill(argumentos: dict) -> str:
     """
     Punto de entrada que el agente llama cuando el modelo invoca la tool.
 
+    Estrategia RAG-first: consulta primero el vector store con las fichas
+    oficiales del RETyS BC. Si no hay resultados relevantes, cae al
+    diccionario TRAMITES_DB como respaldo.
+
     Args:
         argumentos: dict con las claves del JSON Schema:
                     - nombre_tramite (str, requerido)
@@ -412,6 +417,26 @@ def ejecutar_skill(argumentos: dict) -> str:
             ensure_ascii=False,
         )
 
+    # ── Intento 1: búsqueda semántica RAG ────────────────────────────────────
+    rag_resultados = rag_service.recuperar_contexto(nombre)
+    if rag_resultados:
+        mejor = rag_resultados[0]
+        return json.dumps(
+            {
+                "encontrado": True,
+                "fuente": "rag",
+                "tramite": {
+                    "nombre":         mejor["nombre"],
+                    "organismo":      mejor["organismo"],
+                    "homoclave":      mejor["homoclave"],
+                    "texto_completo": mejor["texto"],
+                },
+            },
+            ensure_ascii=False,
+            indent=2,
+        )
+
+    # ── Intento 2: fallback al diccionario TRAMITES_DB ────────────────────────
     resultados = buscar_tramite(nombre, tipo)
 
     if not resultados:
@@ -432,7 +457,7 @@ def ejecutar_skill(argumentos: dict) -> str:
     # Si hay más de un resultado, devolvemos el primero (el más relevante)
     ficha = resultados[0]
     return json.dumps(
-        {"encontrado": True, "tramite": ficha},
+        {"encontrado": True, "fuente": "db", "tramite": ficha},
         ensure_ascii=False,
         indent=2,
     )

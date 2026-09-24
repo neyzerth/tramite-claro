@@ -9,6 +9,7 @@ from fastapi.staticfiles import StaticFiles
 
 from backend.api.tramites import router as tramites_router
 from backend.database import create_db_and_tables
+import backend.rag_service as rag_service
 
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -17,10 +18,19 @@ async def lifespan(app: FastAPI):
     """Ciclo de vida de la aplicacion.
 
     Se ejecuta una vez al arrancar (antes de aceptar requests) y una vez
-    al apagar. Aqui se crea la base de datos SQLite y sus tablas si no existen.
+    al apagar. Aqui se crea la base de datos SQLite y sus tablas si no existen,
+    y se construye el indice RAG si no existe todavia.
     """
     # Al arrancar: crear tramites.db y la tabla "tramite" si no existen.
     create_db_and_tables()
+
+    # Construir el indice RAG si no existe (solo en el primer arranque).
+    print("[RAG] Verificando índice vectorial...")
+    if not rag_service.indice_existe():
+        rag_service.construir_indice()
+    else:
+        print("[RAG] Índice ya existe, omitiendo construcción.")
+
     yield
     # Al apagar: no se requiere limpieza adicional con SQLite.
 
