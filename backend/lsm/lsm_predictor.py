@@ -9,7 +9,6 @@ No requiere cambios en el código que llama a predecir_sena() o reconocer_con_ve
 """
 import json
 import os
-import sys
 
 import numpy as np
 
@@ -48,7 +47,7 @@ def _cargar_modelo_local() -> None:
         raise FileNotFoundError(
             f"Modelo local no encontrado: {MODEL_PATH}\n"
             "Entrénalo primero:\n"
-            "  source backend/lsm/venv312/bin/activate\n"
+            "  source backend/venv/bin/activate\n"
             "  python backend/lsm/train_lsm.py --solo-entrenar"
         )
 
@@ -192,14 +191,6 @@ def reconocer_con_ventana(frames: list[list[float]], umbral: float = 0.6) -> str
 # ─────────────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    if sys.version_info >= (3, 13):
-        print(
-            "❌ Requiere Python ≤3.12. Activa el venv:\n"
-            "   source backend/lsm/venv312/bin/activate",
-            file=sys.stderr,
-        )
-        sys.exit(1)
-
     backend = "WML" if _usar_wml() else "local (Keras)"
     print(f"Backend seleccionado: {backend}")
 
