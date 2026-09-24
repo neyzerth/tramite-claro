@@ -19,8 +19,10 @@ load_dotenv()
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from agent_service import AgenteRETyS
+from database import create_db_and_tables
 from api.routes.tramites import router as router_tramites
 from api.routes.accesibilidad import router as router_accesibilidad
+from api.routes.admin import router as router_admin
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Lifespan: inicializar el agente una sola vez (singleton)
@@ -29,6 +31,7 @@ from api.routes.accesibilidad import router as router_accesibilidad
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Crea el agente al arrancar y lo destruye al cerrar."""
+    create_db_and_tables()
     app.state.agente = AgenteRETyS()
     yield
     # Cleanup (no hay recursos que liberar explícitamente por ahora)
@@ -67,6 +70,7 @@ app.add_middleware(
 
 app.include_router(router_tramites, prefix="/tramites", tags=["Trámites"])
 app.include_router(router_accesibilidad, prefix="/accesibilidad", tags=["Accesibilidad"])
+app.include_router(router_admin, prefix="/admin", tags=["Admin"])
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Health check

@@ -2,7 +2,7 @@
 api/models.py — Schemas Pydantic para request y response de la API.
 """
 import base64
-from typing import Literal
+from typing import Literal, Optional
 
 from pydantic import BaseModel, Field, field_validator
 
@@ -108,4 +108,53 @@ class LSMResponse(BaseModel):
     )
     audio_base64: str = Field(
         ..., description="Audio de la respuesta en Base64 (MP3)."
+    )
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Endpoints de consulta ciudadana (accesible)
+# ─────────────────────────────────────────────────────────────────────────────
+
+class AccesibleResponse(BaseModel):
+    homoclave: str = Field(..., description="Identificador oficial del trámite en el RETyS.")
+    generado: bool = Field(
+        ...,
+        description="True si el documento accesible ya ha sido generado para este trámite.",
+    )
+    url_documento: Optional[str] = Field(
+        default=None,
+        description="Ruta relativa al archivo Markdown, o null si no ha sido generado.",
+    )
+    url_audio: Optional[str] = Field(
+        default=None,
+        description="Ruta relativa al archivo MP3, o null si no ha sido generado.",
+    )
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Endpoints de administración
+# ─────────────────────────────────────────────────────────────────────────────
+
+class TramiteAdminStatus(BaseModel):
+    homoclave: str = Field(..., description="Identificador oficial del trámite en el RETyS.")
+    nombre: str = Field(..., description="Nombre ciudadano del trámite.")
+    tiene_md: bool = Field(..., description="True si ya existe el documento Markdown generado.")
+    tiene_audio: bool = Field(..., description="True si ya existe el audio MP3 generado.")
+    url_documento: Optional[str] = Field(
+        default=None,
+        description="Ruta relativa al archivo Markdown, o null si no ha sido generado.",
+    )
+    url_audio: Optional[str] = Field(
+        default=None,
+        description="Ruta relativa al archivo MP3, o null si no ha sido generado.",
+    )
+
+
+class GenerarResponse(BaseModel):
+    homoclave: str = Field(..., description="Identificador oficial del trámite generado.")
+    nombre: str = Field(..., description="Nombre ciudadano del trámite.")
+    url_documento: str = Field(..., description="Ruta relativa al archivo Markdown generado.")
+    url_audio: Optional[str] = Field(
+        default=None,
+        description="Ruta relativa al archivo MP3 generado, o null si TTS no está disponible.",
     )
