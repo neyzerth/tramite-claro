@@ -9,6 +9,59 @@ export interface AccesibleResponse {
   url_audio: string | null
 }
 
+/**
+ * Elimina toda la sintaxis Markdown y deja solo texto plano con puntuación
+ * natural (espacios, comas, puntos, acentos) para que TTS y Web Speech
+ * pronuncien correctamente sin leer "asterisco", "almohadilla", etc.
+ *
+ * Orden de transformaciones:
+ *  1. Bloques de código  → vacío (no aportan información oral)
+ *  2. Imágenes           → texto alternativo
+ *  3. Enlaces            → solo el texto visible
+ *  4. Negrita / cursiva  → texto sin marcadores
+ *  5. Encabezados        → texto + punto para que TTS haga pausa
+ *  6. Líneas horizontales → vacío
+ *  7. Listas (-, *, +, números) → texto precedido de coma para listar con pausa
+ *  8. Blockquotes        → texto sin ">"
+ *  9. Backtick inline    → texto sin backtick
+ * 10. Espacios múltiples y saltos de línea → espacio simple
+ */
+export function stripMarkdown(md: string): string {
+  return md
+    // 1. Bloques de código ```...```
+    .replace(/```[\s\S]*?```/g, '')
+    // 2. Imágenes ![alt](url) → alt
+    .replace(/!\[([^\]]*)\]\([^)]*\)/g, '$1')
+    // 3. Enlaces [texto](url) → texto
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    // 4. Negrita+cursiva ***texto*** o ___texto___
+    .replace(/\*{3}([^*]+)\*{3}/g, '$1')
+    .replace(/_{3}([^_]+)_{3}/g, '$1')
+    // 4b. Negrita **texto** o __texto__
+    .replace(/\*{2}([^*]+)\*{2}/g, '$1')
+    .replace(/_{2}([^_]+)_{2}/g, '$1')
+    // 4c. Cursiva *texto* o _texto_
+    .replace(/\*([^*]+)\*/g, '$1')
+    .replace(/_([^_]+)_/g, '$1')
+    // 5. Encabezados # ## ### → texto + punto
+    .replace(/^#{1,6}\s+(.+)$/gm, '$1.')
+    // 6. Líneas horizontales --- *** ___
+    .replace(/^[-*_]{3,}\s*$/gm, '')
+    // 7. Listas con viñeta: - item / * item / + item → ", item"
+    .replace(/^[\s]*[-*+]\s+(.+)$/gm, ', $1')
+    // 7b. Listas numeradas: 1. item → ", item"
+    .replace(/^[\s]*\d+\.\s+(.+)$/gm, ', $1')
+    // 8. Blockquotes > texto → texto
+    .replace(/^>\s*/gm, '')
+    // 9. Backtick inline `código` → código
+    .replace(/`([^`]+)`/g, '$1')
+    // 10. Limpiar comas iniciales sueltas al inicio del texto
+    .replace(/^[,\s]+/, '')
+    // 10b. Múltiples espacios / saltos de línea → espacio simple
+    .replace(/\s{2,}/g, ' ')
+    .trim()
+}
+
 /** Consulta si hay una versión de Lectura Fácil pre-generada para el trámite. */
 export async function consultarAccesible(homoclave: string): Promise<AccesibleResponse> {
   try {
