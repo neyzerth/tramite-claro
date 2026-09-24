@@ -37,320 +37,259 @@ export interface Tramite {
     horario: string
   }
   tramitesRelacionados: { id: number; titulo: string }[]
+  urlOficial?: string
+  metricas?: {
+    inflesz: number
+    nivel: string
+    palabras: number
+    terminosJuridicos: number
+  }
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Trámites reales del RETyS Baja California — fichas-dificiles.json
+// Fuente de la verdad: texto_original de cada ficha (corpus/fichas/)
+// ─────────────────────────────────────────────────────────────────────────────
 const tramites: Tramite[] = [
+  // ── 1. BC-CESPT-041 ─────────────────────────────────────────────────────────
   {
-    id: 1650,
-    homoclave: 'BC-TYS-1650',
-    titulo: 'Solicitud de Inscripción al Registro Civil',
-    dependencia: 'Registro Civil del Estado de Baja California',
-    area: 'Dirección del Registro Civil',
+    id: 1634,
+    homoclave: 'BC-CESPT-041',
+    titulo: 'Registro o Revalidación de Exención de Permiso de Descarga de Aguas Residuales para Comercios y Empresas de Servicios',
+    dependencia: 'Comisión Estatal de Servicios Públicos de Tijuana',
+    area: 'Comisión Estatal de Servicios Públicos de Tijuana', // PENDIENTE: área específica no disponible en JSON
     descripcion:
-      'Trámite mediante el cual los ciudadanos solicitan el registro de actos del estado civil, tales como nacimientos, matrimonios, divorcios y defunciones. El Registro Civil es el organismo público encargado de hacer constar y dar fe de los actos y hechos del estado civil de las personas, y de acreditar mediante documentos la situación jurídica de las personas físicas.',
+      'Solicitar la exención del trámite de permiso de descargas, debido a que no se generan aguas residuales de procesos de producción de bienes o servicios.',
     fundamento:
-      'Ley del Registro Civil del Estado de Baja California; Código Civil del Estado de Baja California; Reglamento de la Ley del Registro Civil.',
-    tiempoResolucion: '1 a 3 días hábiles',
-    vigencia: 'Permanente',
+      'Ley Que Reglamenta El Servicio De Agua Potable En El Estado De Baja California Artículos 94 y 109.; ' +
+      'Ley de Comisiones Estatales de Servicios Públicos del Estado De Baja California Artículos 1 y 2.; ' +
+      'Ley de Ingresos del Estado de Baja California para el Ejercicio Fiscal del año 2026 Artículo 9.',
+    tiempoResolucion: '30 Días Hábiles',
+    vigencia: '1 año',
+    // PENDIENTE: texto_original contiene requisitos extendidos (Secciones 1–4); solo se muestran los 4 del JSON
     requisitos: [
-      { numero: 1, descripcion: 'Solicitud debidamente llenada y firmada (formato oficial).' },
-      { numero: 2, descripcion: 'Identificación oficial vigente con fotografía (INE, pasaporte, cédula profesional).' },
-      { numero: 3, descripcion: 'CURP del solicitante.' },
-      { numero: 4, descripcion: 'Comprobante de domicilio no mayor a 3 meses.' },
-      { numero: 5, descripcion: 'Documentos que acrediten el acto a registrar (acta de nacimiento hospitalaria, acta de matrimonio eclesiástico, etc.), según el tipo de inscripción.' },
-      { numero: 6, descripcion: 'Pago de derechos correspondiente.', notas: 'Ver tabla de costos.' },
+      { numero: 1, descripcion: 'Original y copia de la Solicitud de Exención de Permiso de Descarga de Aguas Residuales FRM-022 debidamente llenado y firmado.' },
+      { numero: 2, descripcion: 'Copia de Constancia de Situación Fiscal de la empresa.' },
+      { numero: 3, descripcion: 'Fotografías a color de las áreas del interior de la empresa.' },
+      { numero: 4, descripcion: 'Copia de documentales que acrediten la no generación de descargas de aguas residuales de proceso (manifiestos de disposición de residuos peligrosos, facturas del lavado de ropa de los últimos 6 meses, etc.).' },
     ],
     costos: [
       {
-        concepto: 'Acta de Nacimiento (primera copia)',
-        monto: 'Gratuito',
-        fundamento: 'Ley de Ingresos del Estado',
-        formaPago: 'N/A',
-      },
-      {
-        concepto: 'Acta de Nacimiento (copias adicionales)',
-        monto: '$50.00 MXN',
-        fundamento: 'Ley de Ingresos del Estado, Art. 12',
-        formaPago: 'Efectivo / Transferencia',
-      },
-      {
-        concepto: 'Acta de Matrimonio',
-        monto: '$200.00 MXN',
-        fundamento: 'Ley de Ingresos del Estado, Art. 14',
-        formaPago: 'Efectivo / Transferencia',
-      },
-      {
-        concepto: 'Acta de Defunción',
-        monto: 'Gratuito',
-        fundamento: 'Ley de Ingresos del Estado',
-        formaPago: 'N/A',
+        concepto: 'Costo',
+        monto: 'COSTO VARIABLE: Por expedición: $1,7999.46 pesos | Por la revalidación anual: $976.71 pesos | Septiembre 2026',
+        fundamento: '',
+        formaPago: '',
       },
     ],
-    documentos: [
-      {
-        nombre: 'Formato de Solicitud de Inscripción',
-        archivo: '/downloads/tramite-1650-solicitud.pdf',
-        tipo: 'PDF',
-      },
-    ],
+    documentos: [], // PENDIENTE: formatos descargables no disponibles en JSON
     contacto: {
-      direccion: 'Av. Álvaro Obregón 1262, Col. Nueva, Mexicali, B.C.',
-      telefono: '(686) 552-2220',
-      email: 'registrocivil@bajacalifornia.gob.mx',
-      horario: 'Lunes a Viernes 8:00 - 15:00 hrs',
+      direccion: '', // PENDIENTE: dirección no disponible en JSON
+      telefono: '',  // PENDIENTE
+      email: '',     // PENDIENTE
+      horario: '',   // PENDIENTE
     },
-    tramitesRelacionados: [
-      { id: 661, titulo: 'Licencia de Funcionamiento' },
-      { id: 1618, titulo: 'Certificado de Estudios' },
-    ],
+    tramitesRelacionados: [], // PENDIENTE
+    urlOficial: 'https://retys.bajacalifornia.gob.mx/Portal/TyS/1634',
+    metricas: {
+      inflesz: 70.3,
+      nivel: 'bastante fácil',
+      palabras: 1141,
+      terminosJuridicos: 25,
+    },
   },
+
+  // ── 2. BC-SH-012 ─────────────────────────────────────────────────────────────
   {
     id: 661,
-    homoclave: 'BC-TYS-0661',
-    titulo: 'Licencia de Funcionamiento',
-    dependencia: 'Dirección de Licencias y Permisos',
-    area: 'Subdirección de Permisos Comerciales',
+    homoclave: 'BC-SH-012',
+    titulo: 'Expedición de Licencia de Conducir',
+    dependencia: 'Secretaría de Hacienda de Baja California',
+    area: 'Secretaría de Hacienda de Baja California', // PENDIENTE: área específica no disponible en JSON
     descripcion:
-      'Autorización que otorga el gobierno estatal a personas físicas o morales para operar legalmente un establecimiento comercial, industrial o de servicios dentro del territorio del Estado de Baja California. La licencia garantiza que el establecimiento cumple con los requisitos de seguridad, sanidad, uso de suelo y demás disposiciones legales aplicables.',
+      'Colaborar con el ciudadano para cumplir con los requisitos establecidos para que obtenga su licencia de conducir, con la certeza de que se trata de un documento obtenido legalmente y buscando la seguridad en el manejo de vehículos automotor, con la protección individual como de terceros.',
     fundamento:
-      'Ley de Establecimientos Mercantiles del Estado de Baja California; Reglamento de Licencias de Funcionamiento; Ley de Ingresos del Estado.',
-    tiempoResolucion: '5 a 10 días hábiles',
-    vigencia: 'Anual (renovación obligatoria)',
+      'Ley de Ingresos del Estado de Baja California para el Ejercicio Fiscal del Año 2025, Artículo 10, Fracción I, Inciso A.; ' +
+      'Ley que Regula los Servicios de Control Vehicular en el Estado de Baja California, Artículos 34 y 36.',
+    tiempoResolucion: '45 Minutos',
+    vigencia: '3 años, 5 años y provisionales 9 meses y 1 año.',
     requisitos: [
-      { numero: 1, descripcion: 'Solicitud oficial debidamente llenada y firmada.' },
-      { numero: 2, descripcion: 'Identificación oficial vigente del propietario o representante legal.' },
-      { numero: 3, descripcion: 'RFC y CURP del solicitante.' },
-      { numero: 4, descripcion: 'Acta constitutiva (para personas morales) y poder notarial del representante.' },
-      { numero: 5, descripcion: 'Comprobante de domicilio del establecimiento no mayor a 3 meses.' },
-      { numero: 6, descripcion: 'Permiso de uso de suelo vigente compatible con la actividad.' },
-      { numero: 7, descripcion: 'Dictamen de protección civil favorable.' },
-      { numero: 8, descripcion: 'Pago de derechos correspondiente al giro del negocio.' },
+      { numero: 1, descripcion: 'Cita.' },
+      { numero: 2, descripcion: 'Solicitud del trámite (formato de manifiesto que se captura en la Recaudación de Rentas).' },
+      { numero: 3, descripcion: 'Identificación oficial con fotografía vigente en original y copia (INE, pasaporte mexicano vigente, cédula profesional, matrícula consular, cartilla militar). ORIGINAL Y COPIA.' },
+      { numero: 4, descripcion: 'Comprobante de domicilio no mayor a tres meses de antigüedad en original y copia.' },
+      { numero: 5, descripcion: 'Certificado médico, expedido por institución pública o privada de salud (original y copia).' },
+      { numero: 6, descripcion: 'Acreditar no haber sido condenado por manejar vehículo de motor en estado de ebriedad o bajo el influjo de drogas en los últimos cinco años (carta de no antecedentes penales).' },
+      { numero: 7, descripcion: 'Presentar examen antidoping.' },
+      { numero: 8, descripcion: 'Certificado de estudios con fotografía (mínimo primaria); aplica solo para licencias tipo B y D.' },
+      { numero: 9, descripcion: 'Presentar y aprobar exámenes teórico y práctico de manejo, con vehículo apropiado a la licencia solicitada y tarjeta de circulación vigente (original y copia).' },
+      { numero: 10, descripcion: 'Realizar el pago correspondiente. Opciones: efectivo, cheque certificado, tarjeta débito/crédito (excepto American Express).' },
     ],
     costos: [
       {
-        concepto: 'Licencia de Funcionamiento — Giro de Bajo Impacto',
-        monto: '$800.00 MXN',
-        fundamento: 'Ley de Ingresos, Art. 22 fracción I',
-        formaPago: 'Efectivo / Tarjeta / Transferencia',
-      },
-      {
-        concepto: 'Licencia de Funcionamiento — Giro de Mediano Impacto',
-        monto: '$1,500.00 MXN',
-        fundamento: 'Ley de Ingresos, Art. 22 fracción II',
-        formaPago: 'Efectivo / Tarjeta / Transferencia',
-      },
-      {
-        concepto: 'Licencia de Funcionamiento — Giro de Alto Impacto',
-        monto: '$3,000.00 MXN',
-        fundamento: 'Ley de Ingresos, Art. 22 fracción III',
-        formaPago: 'Efectivo / Tarjeta / Transferencia',
-      },
-      {
-        concepto: 'Renovación anual',
-        monto: '50% del costo original',
-        fundamento: 'Ley de Ingresos, Art. 22 fracción IV',
-        formaPago: 'Efectivo / Tarjeta / Transferencia',
+        concepto: 'Costo',
+        monto: 'COSTO VARIABLE: Mes de Septiembre de 2026. | Automovilista 3 años $ 1,120.39 M.N. | 5 años $ 1,493.85 M.N. | Motociclista 3 años $ 1,120.39 M.N.',
+        fundamento: '',
+        formaPago: '',
       },
     ],
-    documentos: [
-      {
-        nombre: 'Solicitud de Licencia de Funcionamiento',
-        archivo: '/downloads/tramite-661-solicitud.pdf',
-        tipo: 'PDF',
-      },
-      {
-        nombre: 'Reglamento de Establecimientos Mercantiles',
-        archivo: '/downloads/tramite-661-reglamento.pdf',
-        tipo: 'PDF',
-      },
-    ],
+    documentos: [], // PENDIENTE: formatos descargables no disponibles en JSON
     contacto: {
-      direccion: 'Blvd. Benito Juárez 1025, Col. Centro, Mexicali, B.C.',
-      telefono: '(686) 558-3400',
-      email: 'licencias@bajacalifornia.gob.mx',
-      horario: 'Lunes a Viernes 8:00 - 15:00 hrs',
+      direccion: '', // PENDIENTE
+      telefono: '',  // PENDIENTE
+      email: '',     // PENDIENTE
+      horario: '',   // PENDIENTE
     },
-    tramitesRelacionados: [
-      { id: 652, titulo: 'Permiso de Uso de Suelo' },
-      { id: 1582, titulo: 'Constancia de No Antecedentes Penales' },
-    ],
+    tramitesRelacionados: [], // PENDIENTE
+    urlOficial: 'https://retys.bajacalifornia.gob.mx/Portal/TyS/661',
+    metricas: {
+      inflesz: 56.1,
+      nivel: 'normal',
+      palabras: 1246,
+      terminosJuridicos: 22,
+    },
   },
+
+  // ── 3. BC-CEJUM-001 ───────────────────────────────────────────────────────────
   {
-    id: 652,
-    homoclave: 'BC-TYS-0652',
-    titulo: 'Permiso de Uso de Suelo',
-    dependencia: 'Secretaría de Desarrollo Urbano y Sustentabilidad',
-    area: 'Dirección de Planeación Urbana',
+    id: 1238,
+    homoclave: 'BC-CEJUM-001',
+    titulo: 'Atención Integral a Mujeres Víctimas de Violencia',
+    dependencia: 'Centro de Justicia para las Mujeres del Estado de Baja California',
+    area: 'Centro de Justicia para las Mujeres del Estado de Baja California', // PENDIENTE: área específica no disponible en JSON
     descripcion:
-      'Autorización que emite la Secretaría de Desarrollo Urbano mediante la cual se permite o condiciona el uso o el cambio de uso del suelo de un predio, conforme a los planes y programas de desarrollo urbano vigentes en el municipio o localidad. Este permiso es indispensable para el establecimiento de negocios, construcciones nuevas, cambios de giro y regularización de inmuebles.',
+      'Asesoría psicológica, asesoría legal, trabajo social, atención médica preventiva, ludoteca, estancia transitoria, área de empoderamiento y prevención.',
     fundamento:
-      'Ley de Desarrollo Urbano del Estado de Baja California; Programa Estatal de Desarrollo Urbano; Plan Municipal de Desarrollo Urbano vigente.',
-    tiempoResolucion: '10 a 20 días hábiles',
-    vigencia: '1 año (prorrogable)',
+      'Código Nacional de Procedimientos Penales Artículos 17, 18, 109, 110, 259, 261, 262, 272, 275, 277, 366, 368, 369 y 370.',
+    tiempoResolucion: '30 Minutos',
+    vigencia: 'Sin vigencia',
     requisitos: [
-      { numero: 1, descripcion: 'Solicitud oficial con datos del predio y actividad solicitada.' },
-      { numero: 2, descripcion: 'Identificación oficial del propietario o representante legal.' },
-      { numero: 3, descripcion: 'Copia del título de propiedad o contrato de arrendamiento notariado.' },
-      { numero: 4, descripcion: 'Croquis de localización y plano del predio (acotado, con colindancias).' },
-      { numero: 5, descripcion: 'Boleta predial al corriente de pago.' },
-      { numero: 6, descripcion: 'Descripción detallada de la actividad o giro que se pretende desarrollar.' },
-      { numero: 7, descripcion: 'Pago de derechos de revisión.', notas: 'Ver tabla de costos.' },
+      { numero: 1, descripcion: 'Identificación Oficial.' },
     ],
     costos: [
       {
-        concepto: 'Revisión y expedición de dictamen de uso de suelo',
-        monto: '$600.00 MXN',
-        fundamento: 'Ley de Ingresos, Art. 35',
-        formaPago: 'Efectivo / Transferencia',
-      },
-      {
-        concepto: 'Cambio de uso de suelo — Habitacional a Comercial',
-        monto: '$2,500.00 MXN',
-        fundamento: 'Ley de Ingresos, Art. 36 fracción I',
-        formaPago: 'Efectivo / Transferencia',
-      },
-      {
-        concepto: 'Cambio de uso de suelo — Comercial a Industrial',
-        monto: '$5,000.00 MXN',
-        fundamento: 'Ley de Ingresos, Art. 36 fracción II',
-        formaPago: 'Efectivo / Transferencia',
+        concepto: 'Costo',
+        monto: 'Sin costo',
+        fundamento: '',
+        formaPago: '',
       },
     ],
-    documentos: [
-      {
-        nombre: 'Formato de Solicitud de Uso de Suelo',
-        archivo: '/downloads/tramite-652-solicitud.pdf',
-        tipo: 'PDF',
-      },
-    ],
+    documentos: [], // PENDIENTE
     contacto: {
-      direccion: 'Calle L s/n entre Av. Reforma y Calle M, Col. Nueva, Mexicali, B.C.',
-      telefono: '(686) 558-2900',
-      email: 'usosuelo@bajacalifornia.gob.mx',
-      horario: 'Lunes a Viernes 8:00 - 15:00 hrs',
+      direccion: 'Avenida Moctezuma #1, Residencial de Cortez, Tijuana, 22190',
+      telefono: '', // PENDIENTE
+      email: '',    // PENDIENTE
+      horario: '',  // PENDIENTE
     },
-    tramitesRelacionados: [
-      { id: 661, titulo: 'Licencia de Funcionamiento' },
-      { id: 1650, titulo: 'Inscripción al Registro Civil' },
-    ],
+    tramitesRelacionados: [], // PENDIENTE
+    urlOficial: 'https://retys.bajacalifornia.gob.mx/Portal/TyS/1238',
+    metricas: {
+      inflesz: 12.8,
+      nivel: 'muy difícil',
+      palabras: 117,
+      terminosJuridicos: 11,
+    },
   },
+
+  // ── 4. BC-SHFP-002 ────────────────────────────────────────────────────────────
+  {
+    id: 1131,
+    homoclave: 'BC-SHFP-002',
+    titulo: 'Constancia de no inhabilitación.',
+    dependencia: 'Secretaría Anticorrupción y Buen Gobierno',
+    area: 'Secretaría Anticorrupción y Buen Gobierno', // PENDIENTE: área específica no disponible en JSON
+    descripcion:
+      'Trámite a través del cual la Secretaría Anticorrupción y Buen Gobierno, acredita que el solicitante, no cuenta con inhabilitación vigente, para desempeñar un empleo, cargo o comisión.',
+    fundamento:
+      'LEY DE INGRESOS DEL ESTADO DE BAJA CALIFORNIA PARA EL EJERCICIO FISCAL DEL AÑO 2026 18, FRACCIÓN V, INCISO E) DEL CAPÍTULO VII; ' +
+      'REGLAMENTO INTERNO DE LA SECRETARÍA ANTICORRUPCIÓN Y BUEN GOBIERNO 32 Y 36 FRACCIÓN XIII.',
+    tiempoResolucion: '48 Horas',
+    vigencia: '90 DÍAS NATURALES.',
+    requisitos: [
+      { numero: 1, descripcion: 'Registro Federal de Contribuyentes (RFC).' },
+      { numero: 2, descripcion: 'Indicar a qué dependencia se debe enviar la constancia, o si no lo sabes, se hará "a quien corresponda".' },
+      { numero: 3, descripcion: 'Original y copia de una identificación oficial vigente: Credencial para votar (INE), Pasaporte mexicano, Cédula profesional (con foto), Cartilla militar, Licencia de conducir (junto con CURP o constancia de residencia).' },
+      { numero: 4, descripcion: 'Formato para obtener la constancia de no inhabilitación.' },
+      { numero: 5, descripcion: 'Recibo original del pago de derechos (se puede pagar en recaudación de rentas, "Farmacias Roma", o bancos).' },
+    ],
+    costos: [
+      {
+        concepto: 'Costo',
+        monto: 'COSTO VARIABLE: $132.00 M.N. (Actualizándose mensualmente, de conformidad al Transitorio Séptimo de la Ley de Ingresos del Estado de Baja California para el ejercicio fiscal del año 2026).',
+        fundamento: '',
+        formaPago: '',
+      },
+    ],
+    documentos: [], // PENDIENTE
+    contacto: {
+      direccion: '', // PENDIENTE
+      telefono: '',  // PENDIENTE
+      email: '',     // PENDIENTE
+      horario: '',   // PENDIENTE
+    },
+    tramitesRelacionados: [], // PENDIENTE
+    urlOficial: 'https://retys.bajacalifornia.gob.mx/Portal/TyS/1131',
+    metricas: {
+      inflesz: 55.4,
+      nivel: 'normal',
+      palabras: 605,
+      terminosJuridicos: 15,
+    },
+  },
+
+  // ── 5. BC-SSCBC-022 ───────────────────────────────────────────────────────────
   {
     id: 1618,
-    homoclave: 'BC-TYS-1618',
-    titulo: 'Expedición de Certificado de Estudios',
-    dependencia: 'Secretaría de Educación Pública del Estado de Baja California (SEPBC)',
-    area: 'Dirección de Control Escolar',
+    homoclave: 'BC-SSCBC-022',
+    titulo: 'Expedición de Constancia de Antecedentes Penales',
+    dependencia: 'Secretaría de Seguridad Ciudadana del Estado de Baja California',
+    area: 'Secretaría de Seguridad Ciudadana del Estado de Baja California', // PENDIENTE: área específica no disponible en JSON
     descripcion:
-      'Trámite mediante el cual la Secretaría de Educación Pública del Estado expide el certificado oficial que acredita la conclusión de un nivel educativo (preescolar, primaria, secundaria, bachillerato o equivalente) en una institución pública del estado. Este documento tiene validez oficial para trámites laborales, académicos y migratorios.',
+      'Documento donde se hace constar que el ciudadano cuenta o no, con antecedentes penales de carácter doloso del fuero común en el Estado de Baja California.',
     fundamento:
-      'Ley General de Educación; Ley de Educación del Estado de Baja California; Acuerdo Secretarial 286 (revalidación y equivalencia de estudios).',
-    tiempoResolucion: '5 a 15 días hábiles',
-    vigencia: 'Permanente',
+      'Ley Nacional de Ejecución Penal Artículo 27 fracción IV; ' +
+      'Ley Orgánica del Poder Ejecutivo del Estado de Baja California Artículo 34 fracción XXXVI; ' +
+      'Ley de Ingresos del Estado de Baja California para el ejercicio fiscal del año 2026 Artículo 18, fracción I, inciso H.',
+    tiempoResolucion: '5 Minutos',
+    vigencia: '3 MESES',
     requisitos: [
-      { numero: 1, descripcion: 'Solicitud oficial firmada por el interesado o tutor (menores de edad).' },
-      { numero: 2, descripcion: 'Identificación oficial vigente con fotografía.' },
-      { numero: 3, descripcion: 'CURP.' },
-      { numero: 4, descripcion: 'Acta de nacimiento.' },
-      { numero: 5, descripcion: 'Boletas o calificaciones de todos los grados del nivel educativo correspondiente.' },
-      { numero: 6, descripcion: 'Nombre y clave del centro educativo donde se realizaron los estudios.' },
-      { numero: 7, descripcion: 'Pago de derechos (aplica para duplicados y expediciones posteriores a 1 año de egreso).' },
+      { numero: 1, descripcion: 'Identificación oficial vigente (credencial de elector, pasaporte mexicano, licencia de conducir del Estado de Baja California, cartilla del servicio militar nacional liberada, cédula profesional con foto, título profesional).' },
     ],
     costos: [
       {
-        concepto: 'Primera expedición (recién egresado)',
-        monto: 'Gratuito',
-        fundamento: 'Ley General de Educación, Art. 6',
-        formaPago: 'N/A',
-      },
-      {
-        concepto: 'Duplicado por extravío o deterioro',
-        monto: '$350.00 MXN',
-        fundamento: 'Ley de Ingresos del Estado, Art. 18',
-        formaPago: 'Efectivo / Transferencia',
-      },
-      {
-        concepto: 'Apostille o legalización para uso en el extranjero',
-        monto: '$500.00 MXN',
-        fundamento: 'Ley de Ingresos del Estado, Art. 18 bis',
-        formaPago: 'Efectivo / Transferencia',
+        concepto: 'Costo',
+        monto: 'COSTO: $ 284.38 pesos',
+        fundamento: '',
+        formaPago: '',
       },
     ],
-    documentos: [
-      {
-        nombre: 'Formato de Solicitud de Certificado de Estudios',
-        archivo: '/downloads/tramite-1618-solicitud.pdf',
-        tipo: 'PDF',
-      },
-    ],
+    documentos: [], // PENDIENTE
     contacto: {
-      direccion: 'Blvd. Lázaro Cárdenas 1220, Col. Ex-Ejido Coahuila, Mexicali, B.C.',
-      telefono: '(686) 558-4000 ext. 4201',
-      email: 'controlescolar@sepbc.gob.mx',
-      horario: 'Lunes a Viernes 8:00 - 15:00 hrs',
+      direccion: '', // PENDIENTE
+      telefono: '',  // PENDIENTE
+      email: '',     // PENDIENTE
+      horario: '',   // PENDIENTE
     },
-    tramitesRelacionados: [
-      { id: 1650, titulo: 'Inscripción al Registro Civil' },
-      { id: 1582, titulo: 'Constancia de No Antecedentes Penales' },
-    ],
-  },
-  {
-    id: 1582,
-    homoclave: 'BC-TYS-1582',
-    titulo: 'Constancia de No Antecedentes Penales',
-    dependencia: 'Fiscalía General del Estado de Baja California',
-    area: 'Dirección de Antecedentes Penales',
-    descripcion:
-      'Documento oficial expedido por la Fiscalía General del Estado de Baja California que certifica que el solicitante no cuenta con antecedentes penales registrados en el estado. Este documento es requerido para trámites laborales, migratorios, académicos, de adopción y diversos procesos administrativos tanto en el sector público como privado.',
-    fundamento:
-      'Ley Orgánica de la Fiscalía General del Estado de Baja California; Código de Procedimientos Penales del Estado; Acuerdo A/005/2018 de la Fiscalía General.',
-    tiempoResolucion: '1 a 3 días hábiles',
-    vigencia: '90 días naturales a partir de su expedición',
-    requisitos: [
-      { numero: 1, descripcion: 'Solicitud oficial llenada y firmada por el interesado.' },
-      { numero: 2, descripcion: 'Identificación oficial vigente con fotografía (INE, pasaporte, cédula profesional).' },
-      { numero: 3, descripcion: 'CURP.' },
-      { numero: 4, descripcion: 'Comprobante de domicilio vigente (no mayor a 3 meses).' },
-      { numero: 5, descripcion: 'Huellas dactilares (se toman en el momento del trámite).' },
-      { numero: 6, descripcion: 'Pago de derechos correspondiente.' },
-      { numero: 7, descripcion: 'En caso de personas morales: poder notarial del representante legal e identificación oficial del mismo.' },
-    ],
-    costos: [
-      {
-        concepto: 'Constancia de No Antecedentes Penales',
-        monto: '$180.00 MXN',
-        fundamento: 'Ley de Ingresos del Estado, Art. 25 fracción VIII',
-        formaPago: 'Efectivo / Transferencia electrónica',
-      },
-      {
-        concepto: 'Constancia con apostille para uso en el extranjero',
-        monto: '$500.00 MXN',
-        fundamento: 'Ley de Ingresos del Estado, Art. 25 fracción IX',
-        formaPago: 'Efectivo / Transferencia electrónica',
-      },
-    ],
-    documentos: [
-      {
-        nombre: 'Formato de Solicitud de No Antecedentes Penales',
-        archivo: '/downloads/tramite-1582-solicitud.pdf',
-        tipo: 'PDF',
-      },
-      {
-        nombre: 'Requisitos Detallados y Consideraciones',
-        archivo: '/downloads/tramite-1582-requisitos.pdf',
-        tipo: 'PDF',
-      },
-    ],
-    contacto: {
-      direccion: 'Av. Independencia 1012, Col. Ex-Ejido Coahuila, Mexicali, B.C.',
-      telefono: '(686) 558-5700',
-      email: 'antecedentes@fgebc.gob.mx',
-      horario: 'Lunes a Viernes 8:00 - 16:00 hrs',
+    tramitesRelacionados: [], // PENDIENTE
+    urlOficial: 'https://retys.bajacalifornia.gob.mx/Portal/TyS/1618',
+    metricas: {
+      inflesz: 54.8,
+      nivel: 'algo difícil',
+      palabras: 425,
+      terminosJuridicos: 16,
     },
-    tramitesRelacionados: [
-      { id: 661, titulo: 'Licencia de Funcionamiento' },
-      { id: 1618, titulo: 'Certificado de Estudios' },
-    ],
   },
 ]
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PENDIENTES (datos no disponibles en fichas-dificiles.json):
+// - contacto.direccion: BC-CESPT-041, BC-SH-012, BC-SHFP-002, BC-SSCBC-022
+// - contacto.telefono: todas las fichas
+// - contacto.email: todas las fichas
+// - contacto.horario: todas las fichas
+// - tramitesRelacionados: todas las fichas
+// - documentos (formatos descargables): todas las fichas
+// - area (usa dependencia como placeholder): todas las fichas
+// - BC-CESPT-041: requisitos extendidos (Secciones 1–4 de texto_original)
+// ─────────────────────────────────────────────────────────────────────────────
 
 export default tramites

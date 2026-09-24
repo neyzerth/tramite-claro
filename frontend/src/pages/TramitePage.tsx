@@ -191,16 +191,30 @@ function TramitePage() {
                       <Alert.Link href="/admin">Panel de Administración</Alert.Link>.
                     </Alert>
                   ) : mdContent ? (
-                    <div
-                      className="lectura-facil-content p-3 rounded"
-                      style={{
-                        background: '#f8fff8',
-                        border: '2px solid #28a745',
-                        lineHeight: 1.8,
-                        fontSize: '1rem',
-                      }}
-                      dangerouslySetInnerHTML={{ __html: marked(mdContent) as string }}
-                    />
+                    <>
+                      <div
+                        className="lectura-facil-content p-3 rounded"
+                        style={{
+                          background: '#f8fff8',
+                          border: '2px solid #28a745',
+                          lineHeight: 1.8,
+                          fontSize: '1rem',
+                        }}
+                        dangerouslySetInnerHTML={{ __html: marked(mdContent) as string }}
+                      />
+                      {tramite.metricas && (
+                        <details className="mt-3" style={{ fontSize: '0.8rem', color: '#555' }}>
+                          <summary style={{ cursor: 'pointer', fontWeight: 600 }}>
+                            Datos de origen (legibilidad)
+                          </summary>
+                          <ul className="mt-2">
+                            <li>INFLESZ: {tramite.metricas.inflesz} — {tramite.metricas.nivel}</li>
+                            <li>Palabras en original: {tramite.metricas.palabras}</li>
+                            <li>Términos jurídicos: {tramite.metricas.terminosJuridicos}</li>
+                          </ul>
+                        </details>
+                      )}
+                    </>
                   ) : (
                     <Alert variant="warning">
                       No se pudo cargar el documento de Lectura Fácil. Intente de nuevo más tarde.
@@ -238,6 +252,15 @@ function TramitePage() {
                   <div className="section-label">Fundamento Legal</div>
                   <p style={{ fontSize: '0.88rem', lineHeight: 1.7, color: 'var(--retys-text-muted)' }}>{tramite.fundamento}</p>
 
+                  {/* Enlace a ficha oficial RETyS */}
+                  {tramite.urlOficial && (
+                    <p style={{ fontSize: '0.85rem' }}>
+                      🔗 <a href={tramite.urlOficial} target="_blank" rel="noreferrer">
+                        Ficha oficial en el RETyS BC
+                      </a>
+                    </p>
+                  )}
+
                   {/* Requisitos */}
                   <div className="section-label">Requisitos</div>
                   <Table bordered hover size="sm" responsive>
@@ -263,26 +286,30 @@ function TramitePage() {
 
                   {/* Costos */}
                   <div className="section-label">Costos / Derechos</div>
-                  <Table bordered hover size="sm" responsive>
-                    <thead>
-                      <tr>
-                        <th>Concepto</th>
-                        <th style={{ width: 130 }}>Monto</th>
-                        <th style={{ width: 220 }}>Fundamento</th>
-                        <th style={{ width: 180 }}>Forma de Pago</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {tramite.costos.map((costo, idx) => (
-                        <tr key={idx}>
-                          <td>{costo.concepto}</td>
-                          <td className="fw-bold text-center">{costo.monto}</td>
-                          <td style={{ fontSize: '0.8rem', color: 'var(--retys-text-muted)' }}>{costo.fundamento}</td>
-                          <td style={{ fontSize: '0.85rem' }}>{costo.formaPago}</td>
+                  {tramite.costos.length === 1 && tramite.costos[0].fundamento === '' && tramite.costos[0].formaPago === '' ? (
+                    <p style={{ fontSize: '0.92rem', lineHeight: 1.7 }}>{tramite.costos[0].monto}</p>
+                  ) : (
+                    <Table bordered hover size="sm" responsive>
+                      <thead>
+                        <tr>
+                          <th>Concepto</th>
+                          <th style={{ width: 130 }}>Monto</th>
+                          <th style={{ width: 220 }}>Fundamento</th>
+                          <th style={{ width: 180 }}>Forma de Pago</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </Table>
+                      </thead>
+                      <tbody>
+                        {tramite.costos.map((costo, idx) => (
+                          <tr key={idx}>
+                            <td>{costo.concepto}</td>
+                            <td className="fw-bold text-center">{costo.monto}</td>
+                            <td style={{ fontSize: '0.8rem', color: 'var(--retys-text-muted)' }}>{costo.fundamento}</td>
+                            <td style={{ fontSize: '0.85rem' }}>{costo.formaPago}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </Table>
+                  )}
 
                   {/* Documentos / Descargas */}
                   <div className="section-label">Documentos para Descargar</div>
