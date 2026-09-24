@@ -7,10 +7,12 @@ Corre con:
 import os
 import sys
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 load_dotenv()
 
@@ -63,6 +65,20 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Archivos estáticos (documentos Markdown y audios MP3 pre-generados)
+# ─────────────────────────────────────────────────────────────────────────────
+
+_BACKEND_DIR = Path(__file__).resolve().parent.parent
+_DOCUMENTOS_DIR = _BACKEND_DIR / "documentos"
+_AUDIOS_DIR = _BACKEND_DIR / "audios"
+
+_DOCUMENTOS_DIR.mkdir(parents=True, exist_ok=True)
+_AUDIOS_DIR.mkdir(parents=True, exist_ok=True)
+
+app.mount("/documentos", StaticFiles(directory=str(_DOCUMENTOS_DIR)), name="documentos")
+app.mount("/audios", StaticFiles(directory=str(_AUDIOS_DIR)), name="audios")
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Routers

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { Fragment, useState, useEffect, useCallback } from 'react'
 import Container from 'react-bootstrap/Container'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
@@ -157,8 +157,8 @@ function AdminPage() {
                 </thead>
                 <tbody>
                   {filas.map((fila) => (
-                    <>
-                      <tr key={fila.data.homoclave}>
+                    <Fragment key={fila.data.homoclave}>
+                      <tr>
                         <td className="fw-semibold align-middle">{fila.data.nombre}</td>
                         <td className="align-middle">
                           <code style={{ fontSize: '0.78rem', background: '#f0f4fa', padding: '2px 6px', borderRadius: 4 }}>
@@ -200,7 +200,7 @@ function AdminPage() {
                         </td>
                       </tr>
                       {fila.error && (
-                        <tr key={`${fila.data.homoclave}-error`}>
+                        <tr>
                           <td colSpan={5} style={{ padding: '0.25rem 1rem 0.75rem' }}>
                             <Alert variant="danger" className="mb-0 py-2" style={{ fontSize: '0.82rem' }}>
                               ❌ {fila.error}
@@ -208,7 +208,7 @@ function AdminPage() {
                           </td>
                         </tr>
                       )}
-                    </>
+                    </Fragment>
                   ))}
                 </tbody>
               </Table>
