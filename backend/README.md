@@ -11,8 +11,8 @@ Asistente ciudadano accesible para trámites del **Registro Estatal de Trámites
 | `skill_retys.py` | Skill (tool) de consulta al catálogo RETyS BC |
 | `lectura_facil.py` | Transformador de texto a norma Lectura Fácil |
 | `agent_service.py` | Agente orquestador con loop ReAct + tool calling |
-| `stt_service.py` | Watson STT: grabación y transcripción de voz |
-| `tts_service.py` | Watson TTS: síntesis y reproducción de voz |
+| `stt_service.py` | Watson STT: transcripción de voz (modelo `es-MX_BroadbandModel`) |
+| `tts_service.py` | Watson TTS: síntesis de voz (voz `es-LA_SofiaV3Voice`) |
 | `main_voz.py` | CLI conversacional (texto o voz) |
 | `api/` | API REST con FastAPI |
 | `lsm/` | Módulo experimental de Lenguaje de Señas Mexicana |
@@ -73,6 +73,130 @@ uvicorn api.main:app --reload
 ```
 
 La documentación Swagger estará disponible en [http://localhost:8000/docs](http://localhost:8000/docs).
+
+---
+
+## Endpoints de la API
+
+### Estado
+
+| Método | Ruta | Descripción |
+|---|---|---|
+| `GET` | `/` | Health check — verifica que la API está en línea |
+
+### Trámites (`/tramites`)
+
+| Método | Ruta | Descripción |
+|---|---|---|
+| `GET` | `/tramites` | Lista todos los trámites del catálogo RETyS BC |
+| `POST` | `/tramites/consultar` | Consulta el agente IA con texto y recibe respuesta en Lectura Fácil |
+| `GET` | `/tramites/{homoclave}/accesible` | Estado del documento accesible generado para una homoclave |
+
+**`POST /tramites/consultar`** — request/response:
+
+```json
+// Request
+{ "pregunta": "¿Qué necesito para sacar mi licencia?", "modo": "texto" }
+
+// Response
+{
+  "respuesta": "Para sacar tu licencia necesitas...",
+  "tramite_encontrado": true,
+  "nombre_tramite": "Licencia de conducir"
+}
+```
+
+> `modo`: `"texto"` devuelve Markdown con emojis (para pantalla); `"voz"` devuelve texto plano optimizado para TTS.
+
+---
+
+### Accesibilidad (`/accesibilidad`)
+
+#### `POST /accesibilidad/voz/consultar` — Pipeline voz completo
+
+Recibe audio del ciudadano, transcribe con Watson STT, consulta el agente y devuelve la respuesta sintetizada con Watson TTS.
+
+```json
+// Request
+{ "audio_base64": "<PCM 16-bit mono 16kHz codificado en Base64>" }
+
+// Response
+{
+  "respuesta_texto": "Para tramitar tu licencia...",
+  "audio_base64": "<MP3 en Base64>",
+  "transcripcion": "cómo saco mi licencia"
+}
+```
+
+> **Formato de audio esperado:** PCM 16-bit, mono, 16 kHz (`audio/l16;rate=16000`).
+
+---
+
+#### `POST /accesibilidad/tts/sintetizar` — Sintetizar texto a voz
+
+Convierte cualquier texto a audio MP3 usando Watson TTS. Útil para que el frontend reproduzca respuestas de texto en voz alta.
+
+```json
+// Request
+{ "texto": "Necesitas tu INE y comprobante de domicilio." }
+
+// Response
+{
+  "audio_base64": "<MP3 en Base64>",
+  "longitud_bytes": 42343
+}
+```
+
+**Reproducir en el navegador (JavaScript):**
+
+```js
+const res = await fetch('/accesibilidad/tts/sintetizar', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ texto: 'Texto a escuchar' })
+});
+const { audio_base64 } = await res.json();
+const audio = new Audio(`data:audio/mp3;base64,${audio_base64}`);
+audio.play();
+```
+
+---
+
+#### `POST /accesibilidad/lsm/consultar` — Lenguaje de Señas Mexicana *(experimental)*
+
+Recibe keypoints de mano detectados por MediaPipe Hands, clasifica la seña con un modelo WML y devuelve la respuesta sintetizada.
+
+```json
+// Request
+{ "keypoints": [0.12, 0.45, 0.03, /* ... 63 floats */] }
+
+// Response
+{
+  "sena_reconocida": "hola",
+  "respuesta_texto": "¡Hola! Soy Claro...",
+  "audio_base64": "<MP3 en Base64>"
+}
+```
+
+> Requiere `WML_LSM_DEPLOYMENT_ID` configurado en `.env` y modelo entrenado con `lsm/train_lsm.py`.
+
+---
+
+### Administración (`/admin`)
+
+| Método | Ruta | Descripción |
+|---|---|---|
+| `GET` | `/admin/tramites` | Estado de generación de documentos/audio por trámite |
+| `POST` | `/admin/tramites/{homoclave}/generar` | Genera (o regenera) el Markdown y MP3 de un trámite |
+
+---
+
+### Archivos estáticos
+
+| Ruta | Descripción |
+|---|---|
+| `/documentos/{archivo}.md` | Documento Markdown generado para un trámite |
+| `/audios/{homoclave}.mp3` | Audio MP3 pre-generado para un trámite |
 
 ### Descargar corpus RETyS BC
 

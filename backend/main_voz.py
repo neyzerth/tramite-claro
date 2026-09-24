@@ -35,7 +35,7 @@ SEPARADOR = "─" * 60
 # ─────────────────────────────────────────────────────────────────────────────
 
 def modo_texto(agente: AgenteRETyS) -> None:
-    """Loop conversacional de texto: entrada por teclado, salida en terminal."""
+    """Loop conversacional de texto: entrada por teclado, salida en terminal y voz."""
     print(BIENVENIDA)
     print("Modo: TEXTO  (escribe tu pregunta)\n")
 
@@ -65,6 +65,11 @@ def modo_texto(agente: AgenteRETyS) -> None:
 
         print(f"\n{respuesta}")
         print(f"\n{SEPARADOR}\n")
+
+        try:
+            hablar(respuesta)
+        except Exception as exc:  # noqa: BLE001
+            print(f"⚠️  No se pudo reproducir el audio: {exc}")
 
 
 def modo_accesibilidad(agente: AgenteRETyS) -> None:

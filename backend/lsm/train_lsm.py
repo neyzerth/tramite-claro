@@ -20,7 +20,7 @@ load_dotenv()
 # ─────────────────────────────────────────────────────────────────────────────
 
 DATASET_CSV = os.path.join(os.path.dirname(__file__), "dataset", "keypoints.csv")
-MODEL_DIR = os.path.join(os.path.dirname(__file__), "modelo_lsm")
+MODEL_DIR = os.path.join(os.path.dirname(__file__), "modelo_lsm", "model.keras")
 EPOCHS = 50
 BATCH_SIZE = 32
 TEST_SPLIT = 0.2
@@ -125,15 +125,15 @@ def entrenar(csv_path: str = DATASET_CSV, model_dir: str = MODEL_DIR):
     loss, acc = modelo.evaluate(X_test, y_test, verbose=0)
     print(f"✅ Evaluación final — Loss: {loss:.4f} | Accuracy: {acc:.4f}")
 
-    # Guardar el modelo en formato SavedModel
-    os.makedirs(model_dir, exist_ok=True)
+    # Guardar el modelo en formato Keras 3 (.keras)
+    os.makedirs(os.path.dirname(model_dir), exist_ok=True)
     modelo.save(model_dir)
 
     # Guardar el mapeo de clases para uso en predicción
-    clases_path = os.path.join(model_dir, "clases.json")
+    clases_path = os.path.join(os.path.dirname(model_dir), "clases.json")
     with open(clases_path, "w", encoding="utf-8") as f:
         json.dump(clases, f, ensure_ascii=False)
-    print(f"💾 Modelo guardado en: {model_dir}")
+    print(f"💾 Modelo guardado en:  {model_dir}")
     print(f"💾 Clases guardadas en: {clases_path}")
 
     return modelo, clases, historial
@@ -145,7 +145,7 @@ def entrenar(csv_path: str = DATASET_CSV, model_dir: str = MODEL_DIR):
 
 def desplegar_en_wml(model_dir: str = MODEL_DIR) -> str:
     """
-    Despliega el modelo SavedModel en Watson Machine Learning y devuelve el
+    Despliega el modelo Keras en Watson Machine Learning y devuelve el
     deployment ID para uso en lsm_predictor.py.
 
     Returns:
@@ -163,13 +163,13 @@ def desplegar_en_wml(model_dir: str = MODEL_DIR) -> str:
     print("📦 Almacenando modelo en WML...")
     meta_props = {
         client.repository.ModelMetaNames.NAME: "Clasificador LSM — Trámite Claro",
-        client.repository.ModelMetaNames.TYPE: "tensorflow_2.12",
+        client.repository.ModelMetaNames.TYPE: "tensorflow_2.16",
         client.repository.ModelMetaNames.SOFTWARE_SPEC_ID: client.software_specifications.get_id_by_name(
-            "runtime-22.2-py3.10"
+            "runtime-24.1-py3.11"
         ),
     }
     modelo_asset = client.repository.store_model(
-        model=model_dir, meta_props=meta_props
+        model=os.path.dirname(model_dir), meta_props=meta_props
     )
     model_id = client.repository.get_model_id(modelo_asset)
     print(f"   Model asset ID: {model_id}")

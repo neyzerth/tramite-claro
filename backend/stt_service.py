@@ -2,13 +2,16 @@
 stt_service.py — Watson Speech to Text.
 
 Graba audio desde el micrófono y lo transcribe usando Watson STT
-con el modelo en español latinoamericano.
+con el modelo en español mexicano (es-MX, banda ancha 16kHz).
 """
 import os
 from dotenv import load_dotenv
 from ibm_watson import SpeechToTextV1
 from ibm_watson.websocket import RecognizeCallback, AudioSource
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+import requests as _requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 load_dotenv()
 
@@ -16,7 +19,7 @@ load_dotenv()
 # Configuración del cliente Watson STT
 # ─────────────────────────────────────────────────────────────────────────────
 
-_STT_MODEL = "es-LA_BroadbandModel"   # Español latinoamericano, banda ancha
+_STT_MODEL = "es-MX_BroadbandModel"   # Español mexicano, banda ancha (es-LA_BroadbandModel retirado)
 _AUDIO_RATE = 16000
 _AUDIO_CHANNELS = 1
 _AUDIO_FORMAT_PA = None   # Se inicializa con pyaudio en tiempo de ejecución
@@ -24,10 +27,17 @@ _AUDIO_CHUNK = 1024
 
 
 def _get_stt_client() -> SpeechToTextV1:
-    """Crea y devuelve una instancia autenticada de Watson STT."""
+    """Crea y devuelve una instancia autenticada de Watson STT con retry automático."""
     authenticator = IAMAuthenticator(os.getenv("STT_API_KEY", ""))
     client = SpeechToTextV1(authenticator=authenticator)
     client.set_service_url(os.getenv("STT_URL", ""))
+
+    # Configurar retry para tolerar fallos transitorios de red en el pool HTTPS
+    session = _requests.Session()
+    retry = Retry(total=3, backoff_factor=1, status_forcelist=[429, 500, 502, 503, 504])
+    session.mount("https://", HTTPAdapter(max_retries=retry))
+    client.set_http_client(session)
+
     return client
 
 

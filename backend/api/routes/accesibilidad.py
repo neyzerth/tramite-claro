@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspa
 
 from stt_service import transcribir_audio
 from tts_service import texto_a_audio
-from api.models import AudioRequest, AudioResponse, LSMRequest, LSMResponse
+from api.models import AudioRequest, AudioResponse, LSMRequest, LSMResponse, TTSRequest, TTSResponse
 
 router = APIRouter()
 
@@ -67,6 +67,29 @@ async def consultar_por_voz(body: AudioRequest, request: Request) -> AudioRespon
         respuesta_texto=respuesta_texto,
         audio_base64=base64.b64encode(audio_respuesta).decode("utf-8"),
         transcripcion=transcripcion,
+    )
+
+
+@router.post(
+    "/tts/sintetizar",
+    response_model=TTSResponse,
+    summary="Sintetizar texto a voz",
+    description=(
+        "Convierte texto plano a audio MP3 usando Watson TTS con voz neural "
+        "en español latinoamericano (es-LA_SofiaV3Voice). "
+        "Devuelve el MP3 codificado en Base64 listo para reproducir en el navegador."
+    ),
+)
+async def sintetizar_tts(body: TTSRequest) -> TTSResponse:
+    """Convierte texto a audio MP3 directamente, sin pasar por el agente."""
+    try:
+        audio_bytes = texto_a_audio(body.texto)
+    except RuntimeError as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+
+    return TTSResponse(
+        audio_base64=base64.b64encode(audio_bytes).decode("utf-8"),
+        longitud_bytes=len(audio_bytes),
     )
 
 

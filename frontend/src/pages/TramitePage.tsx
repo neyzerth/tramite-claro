@@ -11,7 +11,7 @@ import Spinner from 'react-bootstrap/Spinner'
 import Alert from 'react-bootstrap/Alert'
 import { Link, useParams } from 'react-router-dom'
 import tramites from '../data/tramites'
-import { consultarAccesible, BASE_URL } from '../api/tramiteApi'
+import { consultarAccesible, sintetizarTTS, BASE_URL } from '../api/tramiteApi'
 import type { AccesibleResponse } from '../api/tramiteApi'
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -29,12 +29,14 @@ function TramitePage() {
   const [mdContent, setMdContent] = useState<string | null>(null)
   const [reproduciendo, setReproduciendo] = useState(false)
   const audioRef = useRef<HTMLAudioElement | null>(null)
+  const blobUrlRef = useRef<string | null>(null)
 
   // Cleanup on unmount
   useEffect(() => {
     return () => {
       audioRef.current?.pause()
       window.speechSynthesis.cancel()
+      if (blobUrlRef.current) URL.revokeObjectURL(blobUrlRef.current)
     }
   }, [])
 
@@ -54,6 +56,10 @@ function TramitePage() {
     audioRef.current?.pause()
     audioRef.current = null
     window.speechSynthesis.cancel()
+    if (blobUrlRef.current) {
+      URL.revokeObjectURL(blobUrlRef.current)
+      blobUrlRef.current = null
+    }
     setReproduciendo(false)
   }
 
@@ -100,7 +106,7 @@ function TramitePage() {
     setModoLF(true)
   }
 
-  const handleEscuchar = () => {
+  const handleEscuchar = async () => {
     if (reproduciendo) {
       stopAudio()
       return
@@ -108,20 +114,43 @@ function TramitePage() {
 
     setReproduciendo(true)
 
+    // 1. Si hay MP3 pre-generado en el backend, reproducirlo directamente
     if (accesibleData?.url_audio) {
       const audio = new Audio(`${BASE_URL}/${accesibleData.url_audio}`)
       audioRef.current = audio
       audio.onended = () => setReproduciendo(false)
-      audio.onerror = () => {
-        // Fallback to Web Speech if the MP3 fails
-        if (mdContent) usarWebSpeech(mdContent)
-        else setReproduciendo(false)
+      audio.onerror = async () => {
+        // Fallback: pedir Watson TTS on-demand
+        await reproducirConWatsonTTS()
       }
       void audio.play()
-    } else if (mdContent) {
-      usarWebSpeech(mdContent)
+      return
+    }
+
+    // 2. Pedir síntesis on-demand a Watson TTS
+    await reproducirConWatsonTTS()
+  }
+
+  const reproducirConWatsonTTS = async () => {
+    const texto = mdContent ?? tramite.descripcion
+    const blob = await sintetizarTTS(texto)
+
+    if (blob) {
+      // Liberar blob URL anterior si existe
+      if (blobUrlRef.current) URL.revokeObjectURL(blobUrlRef.current)
+      const url = URL.createObjectURL(blob)
+      blobUrlRef.current = url
+      const audio = new Audio(url)
+      audioRef.current = audio
+      audio.onended = () => setReproduciendo(false)
+      audio.onerror = () => {
+        // Último fallback: Web Speech API del navegador
+        usarWebSpeech(texto)
+      }
+      void audio.play()
     } else {
-      setReproduciendo(false)
+      // Último fallback: Web Speech API del navegador
+      usarWebSpeech(texto)
     }
   }
 
@@ -174,7 +203,7 @@ function TramitePage() {
                   <Button
                     variant={reproduciendo ? 'danger' : 'outline-primary'}
                     size="sm"
-                    onClick={handleEscuchar}
+                    onClick={() => { void handleEscuchar() }}
                   >
                     {reproduciendo ? '⏹ Detener' : '🔊 Escuchar'}
                   </Button>
