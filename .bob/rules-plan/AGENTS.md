@@ -15,8 +15,9 @@ Both calls use the same `WATSONX_MODEL_ID`. The agent uses `temperature=0.3`; th
 
 ## Storage Architecture
 
-- Generated Markdown files live in `documentos/` (created at project root at runtime)
-- Audio files would live in `audios/` — both directories are mounted as FastAPI `StaticFiles` with `check_dir=False` so startup doesn't fail if empty
+- Generated Markdown files live in `backend/documentos/` — path is resolved via `Path(__file__).resolve().parent.parent` in `markdown_utils.py`, not relative to CWD
+- `tramites.db` lives at `backend/tramites.db` — also anchored to `__file__` in `database.py`
+- Audio files would live in `backend/audios/` — both directories are mounted as FastAPI `StaticFiles` with `check_dir=False` so startup doesn't fail if empty
 - File naming: `slug(homoclave)_slug(nombre).md` — slugs strip accents and replace non-alphanumerics with `-`
 
 ## Coupling Constraints

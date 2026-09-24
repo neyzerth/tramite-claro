@@ -8,9 +8,9 @@ Trámite Claro is an accessibility-focused civic assistant for RETyS BC (Baja Ca
 
 ## Commands
 
-### Backend (run from `backend/` or project root)
+### Backend (run from project root)
 ```bash
-# Start API server (must run from project root, NOT from backend/)
+# Start API server
 uvicorn backend.main:app --reload
 
 # CLI conversational mode
@@ -43,10 +43,10 @@ The backend has two entry points that don't share routing:
 The ReAct agent pipeline: `AgenteRETyS` → `skill_retys.ejecutar_skill()` → `lectura_facil.transformar_a_lectura_facil()`
 
 Key non-obvious constraints:
-- `generar_markdown()` in `backend/core/markdown_utils.py` is **idempotent**: won't overwrite existing files. If you regenerate a procedure, delete `documentos/<file>.md` first.
-- SQLite DB (`tramites.db`) is created at runtime relative to where `uvicorn` is invoked (project root). Running from `backend/` creates it there instead.
+- `generar_markdown()` in `backend/core/markdown_utils.py` is **idempotent**: won't overwrite existing files. If you regenerate a procedure, delete `backend/documentos/<file>.md` first.
+- `tramites.db` is always created at `backend/tramites.db` (path is anchored to `__file__`, not CWD).
+- Generated `.md` files are always written to `backend/documentos/` (anchored to `__file__`), not to a `documentos/` folder in the CWD.
 - `texto_simplificado` in `TramiteCreate` is **never stored in SQLite** — only the file path is persisted.
-- `backend/api/tramites.py` has a bug: `from sqlModel import Session` (capital M) — should be `sqlmodel`.
 
 ## Frontend Architecture
 

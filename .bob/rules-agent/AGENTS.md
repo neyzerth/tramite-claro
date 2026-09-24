@@ -2,9 +2,8 @@
 
 ## Backend Python
 
-- **`uvicorn` must be run from project root** as `uvicorn backend.main:app --reload`. Running from inside `backend/` breaks module imports (`from backend.api...` fails) and puts `tramites.db` in the wrong directory.
-- **`backend/core/markdown_utils.py`:`generar_markdown()`** is idempotent — it will NOT overwrite an existing `.md` file. Delete `documentos/<slug>.md` manually before regenerating.
-- **`backend/api/tramites.py`** has a casing bug: `from sqlModel import Session` should be `from sqlmodel import Session`. Fix this before running the API.
+- **`uvicorn` must be run from project root** as `uvicorn backend.main:app --reload` (module imports require the `backend.` prefix). The DB and file paths are now anchored to `__file__` so they resolve correctly from any CWD.
+- **`backend/core/markdown_utils.py`:`generar_markdown()`** is idempotent — it will NOT overwrite an existing `.md` file. Delete `backend/documentos/<slug>.md` manually before regenerating.
 - **`texto_simplificado`** in `TramiteCreate` schema is intentionally NOT persisted to SQLite — only the generated file path is stored. Don't add it to the `Tramite` model.
 - **`backend/skill_retys.py`:`TRAMITES_DB`** is an in-memory dict (not SQLite). The SQLite DB only stores processed results. Adding new RETyS procedures means editing `TRAMITES_DB` directly.
 - Section header style: `# ─────────────────────────────────────────────────────────────────────────────` (unicode U+2500, not ASCII `-`).
