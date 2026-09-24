@@ -6,22 +6,12 @@ Abre la cámara, detecta la mano con MediaPipe Tasks y clasifica la seña
 usando el modelo entrenado (local o WML según el entorno).
 
 Uso:
-  source backend/lsm/venv312/bin/activate
+  source backend/venv/bin/activate
   python backend/lsm/lsm_demo.py
 
 Controles:
   Q  — salir
 """
-import sys
-
-if sys.version_info >= (3, 13):
-    print(
-        "❌ Requiere Python ≤3.12. Activa el venv:\n"
-        "   source backend/lsm/venv312/bin/activate",
-        file=sys.stderr,
-    )
-    sys.exit(1)
-
 import os
 import urllib.request
 from collections import deque
