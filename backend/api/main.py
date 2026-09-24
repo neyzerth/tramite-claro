@@ -7,10 +7,12 @@ Corre con:
 import os
 import sys
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 load_dotenv()
 
@@ -19,8 +21,10 @@ load_dotenv()
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from agent_service import AgenteRETyS
+from database import create_db_and_tables
 from api.routes.tramites import router as router_tramites
 from api.routes.accesibilidad import router as router_accesibilidad
+from api.routes.admin import router as router_admin
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Lifespan: inicializar el agente una sola vez (singleton)
@@ -29,6 +33,7 @@ from api.routes.accesibilidad import router as router_accesibilidad
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Crea el agente al arrancar y lo destruye al cerrar."""
+    create_db_and_tables()
     app.state.agente = AgenteRETyS()
     yield
     # Cleanup (no hay recursos que liberar explícitamente por ahora)
@@ -62,11 +67,26 @@ app.add_middleware(
 )
 
 # ─────────────────────────────────────────────────────────────────────────────
+# Archivos estáticos (documentos Markdown y audios MP3 pre-generados)
+# ─────────────────────────────────────────────────────────────────────────────
+
+_BACKEND_DIR = Path(__file__).resolve().parent.parent
+_DOCUMENTOS_DIR = _BACKEND_DIR / "documentos"
+_AUDIOS_DIR = _BACKEND_DIR / "audios"
+
+_DOCUMENTOS_DIR.mkdir(parents=True, exist_ok=True)
+_AUDIOS_DIR.mkdir(parents=True, exist_ok=True)
+
+app.mount("/documentos", StaticFiles(directory=str(_DOCUMENTOS_DIR)), name="documentos")
+app.mount("/audios", StaticFiles(directory=str(_AUDIOS_DIR)), name="audios")
+
+# ─────────────────────────────────────────────────────────────────────────────
 # Routers
 # ─────────────────────────────────────────────────────────────────────────────
 
 app.include_router(router_tramites, prefix="/tramites", tags=["Trámites"])
 app.include_router(router_accesibilidad, prefix="/accesibilidad", tags=["Accesibilidad"])
+app.include_router(router_admin, prefix="/admin", tags=["Admin"])
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Health check

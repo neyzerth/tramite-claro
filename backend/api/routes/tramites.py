@@ -7,13 +7,16 @@ POST /tramites/consultar    → consulta el agente con texto y devuelve Lectura 
 import sys
 import os
 
-from fastapi import APIRouter, HTTPException, Request
+from fastapi import APIRouter, Depends, HTTPException, Request
+from sqlmodel import Session, select
 
 # Añadir el directorio raíz del backend al path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 from skill_retys import TRAMITES_DB
-from api.models import ConsultaRequest, ConsultaResponse, TramiteResumen
+from database import get_session
+from models.tramite import Tramite
+from api.models import AccesibleResponse, ConsultaRequest, ConsultaResponse, TramiteResumen
 
 router = APIRouter()
 
@@ -69,4 +72,37 @@ async def consultar_tramite(body: ConsultaRequest, request: Request) -> Consulta
         respuesta=respuesta,
         tramite_encontrado=tramite_encontrado,
         nombre_tramite=nombre_tramite,
+    )
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# GET /{homoclave}/accesible
+# ─────────────────────────────────────────────────────────────────────────────
+
+@router.get(
+    "/{homoclave}/accesible",
+    response_model=AccesibleResponse,
+    summary="Consultar estado accesible de un trámite",
+    description=(
+        "Devuelve si el documento en Lectura Fácil ya ha sido generado para el trámite "
+        "identificado por su homoclave. Si no existe, devuelve generado=false sin error."
+    ),
+)
+async def consultar_accesible(
+    homoclave: str,
+    session: Session = Depends(get_session),
+) -> AccesibleResponse:
+    """Devuelve el estado de generación del documento accesible para una homoclave."""
+    tramite = session.exec(
+        select(Tramite).where(Tramite.homoclave == homoclave)
+    ).first()
+
+    if tramite is None:
+        return AccesibleResponse(homoclave=homoclave, generado=False)
+
+    return AccesibleResponse(
+        homoclave=homoclave,
+        generado=True,
+        url_documento=tramite.ruta_md,
+        url_audio=tramite.ruta_audio,
     )

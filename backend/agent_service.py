@@ -99,10 +99,22 @@ class AgenteRETyS:
                     fn_name = tool_call["function"]["name"]
                     fn_args_raw = tool_call["function"].get("arguments", "{}")
 
-                    # Parsear argumentos (pueden venir como string JSON)
+                    # Parsear argumentos (pueden venir como string JSON o
+                    # como string doblemente escapado — watsonx devuelve a veces
+                    # arguments como '"{\\"nombre_tramite\\": \\"…\\"}"' en lugar
+                    # de '{"nombre_tramite": "…"}')
                     if isinstance(fn_args_raw, str):
                         try:
-                            fn_args = json.loads(fn_args_raw)
+                            parsed = json.loads(fn_args_raw)
+                            # Si el SDK devuelve arguments como JSON string dentro
+                            # de otro JSON string, parsear una segunda vez.
+                            if isinstance(parsed, str):
+                                try:
+                                    fn_args = json.loads(parsed)
+                                except json.JSONDecodeError:
+                                    fn_args = {}
+                            else:
+                                fn_args = parsed
                         except json.JSONDecodeError:
                             fn_args = {}
                     else:
