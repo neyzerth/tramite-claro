@@ -1,0 +1,425 @@
+/* Custom overrides for RETyS clone — prefer Bootstrap classes when possible */
+
+/* ===== COLORS ===== */
+:root {
+  --retys-primary: #003876;     /* Azul Gobierno BC */
+  --retys-secondary: #e8161e;   /* Rojo Gobierno BC */
+  --retys-accent: #f5a800;      /* Dorado/Naranja acento */
+  --retys-light-bg: #f4f6f9;
+  --retys-text-dark: #1a1a1a;
+  --retys-text-muted: #6c757d;
+  --retys-border: #dee2e6;
+}
+
+/* ===== GLOBAL ===== */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #fff;
+  color: var(--retys-text-dark);
+}
+
+/* ===== TOP BAR ===== */
+.top-bar {
+  background-color: var(--retys-primary);
+  color: #fff;
+  font-size: 0.82rem;
+  padding: 0.3rem 0;
+}
+.top-bar a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
+.top-bar a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* ===== NAVBAR ===== */
+.navbar-retys {
+  background-color: #fff;
+  border-bottom: 3px solid var(--retys-secondary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.navbar-retys .navbar-brand img {
+  max-height: 56px;
+}
+.navbar-retys .nav-link {
+  color: var(--retys-primary) !important;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.85rem !important;
+}
+.navbar-retys .nav-link:hover,
+.navbar-retys .nav-link.active {
+  color: var(--retys-secondary) !important;
+  border-bottom: 2px solid var(--retys-secondary);
+}
+.navbar-retys .search-input {
+  border-radius: 20px;
+  border: 1px solid var(--retys-border);
+  padding: 0.3rem 1rem;
+  font-size: 0.85rem;
+  min-width: 200px;
+}
+.navbar-retys .search-btn {
+  background-color: var(--retys-primary);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 0.3rem 1rem;
+  font-size: 0.85rem;
+  margin-left: 4px;
+}
+
+/* ===== HERO ===== */
+.hero-banner {
+  background: linear-gradient(135deg, var(--retys-primary) 0%, #005aad 100%);
+  color: #fff;
+  padding: 3.5rem 0 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-banner h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+.hero-banner p {
+  font-size: 1.05rem;
+  opacity: 0.92;
+  max-width: 560px;
+}
+.hero-banner .btn-hero {
+  background-color: var(--retys-secondary);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 0.55rem 1.6rem;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+.hero-banner .btn-hero:hover {
+  background-color: #c01018;
+  color: #fff;
+}
+
+/* ===== QUICK ACCESS ICONS ===== */
+.quick-access {
+  background-color: var(--retys-light-bg);
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--retys-border);
+}
+.quick-access-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: var(--retys-primary);
+  padding: 1rem 0.5rem;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+.quick-access-item:hover {
+  background-color: #e0e8f3;
+  color: var(--retys-primary);
+}
+.quick-access-item .qa-icon {
+  width: 52px;
+  height: 52px;
+  background-color: var(--retys-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.6rem;
+  font-size: 1.4rem;
+  color: #fff;
+}
+.quick-access-item span {
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* ===== SECTION TITLE ===== */
+.section-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--retys-primary);
+  border-left: 4px solid var(--retys-secondary);
+  padding-left: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== TRAMITES CARDS ===== */
+.tramite-card {
+  border: 1px solid var(--retys-border);
+  border-radius: 6px;
+  transition: box-shadow 0.15s, border-color 0.15s;
+  height: 100%;
+}
+.tramite-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 56, 118, 0.12);
+  border-color: var(--retys-primary);
+}
+.tramite-card .card-header {
+  background-color: var(--retys-primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 0.6rem 1rem;
+}
+.tramite-card .card-body {
+  padding: 1rem;
+}
+.tramite-card .card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--retys-primary);
+  margin-bottom: 0.4rem;
+}
+.tramite-card .card-text {
+  font-size: 0.83rem;
+  color: var(--retys-text-muted);
+  margin-bottom: 0.75rem;
+}
+.tramite-card .btn-tramite {
+  background-color: var(--retys-primary);
+  color: #fff;
+  font-size: 0.82rem;
+  border: none;
+  padding: 0.3rem 0.9rem;
+  border-radius: 4px;
+}
+.tramite-card .btn-tramite:hover {
+  background-color: #005aad;
+  color: #fff;
+}
+
+/* ===== CATEGORIES ===== */
+.category-section {
+  padding: 2.5rem 0;
+  background-color: #fff;
+}
+.category-pill {
+  display: inline-block;
+  background-color: var(--retys-light-bg);
+  border: 1px solid var(--retys-border);
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  font-size: 0.83rem;
+  color: var(--retys-primary);
+  font-weight: 500;
+  text-decoration: none;
+  margin: 0.25rem;
+  transition: background 0.15s;
+}
+.category-pill:hover {
+  background-color: var(--retys-primary);
+  color: #fff;
+  border-color: var(--retys-primary);
+}
+
+/* ===== NEWS SECTION ===== */
+.news-section {
+  background-color: var(--retys-light-bg);
+  padding: 2.5rem 0;
+}
+.news-card {
+  background: #fff;
+  border: 1px solid var(--retys-border);
+  border-radius: 6px;
+  overflow: hidden;
+  height: 100%;
+}
+.news-card .news-date {
+  font-size: 0.78rem;
+  color: var(--retys-text-muted);
+  margin-bottom: 0.3rem;
+}
+.news-card .news-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--retys-primary);
+  margin-bottom: 0.5rem;
+}
+.news-card .news-excerpt {
+  font-size: 0.83rem;
+  color: var(--retys-text-muted);
+}
+.news-card .news-link {
+  font-size: 0.82rem;
+  color: var(--retys-secondary);
+  font-weight: 600;
+  text-decoration: none;
+}
+.news-card .news-link:hover {
+  text-decoration: underline;
+}
+.news-img-placeholder {
+  background-color: #dce6f0;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--retys-primary);
+  font-size: 2rem;
+}
+
+/* ===== FOOTER ===== */
+.footer-main {
+  background-color: var(--retys-primary);
+  color: rgba(255, 255, 255, 0.88);
+  padding: 2.5rem 0 1rem;
+  font-size: 0.85rem;
+}
+.footer-main h6 {
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.9rem;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 0.4rem;
+}
+.footer-main a {
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.83rem;
+}
+.footer-main a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+.footer-main .footer-social a {
+  display: inline-block;
+  margin-right: 0.7rem;
+  margin-bottom: 0;
+  background: rgba(255,255,255,0.12);
+  border-radius: 4px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+}
+.footer-main .footer-social a:hover {
+  background: rgba(255,255,255,0.25);
+  text-decoration: none;
+}
+.footer-bottom {
+  background-color: #002558;
+  color: rgba(255,255,255,0.65);
+  font-size: 0.78rem;
+  padding: 0.7rem 0;
+  text-align: center;
+}
+.footer-bottom a {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+}
+.footer-bottom a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* ===== TRÁMITE DETAIL PAGE ===== */
+.tramite-page-header {
+  background-color: var(--retys-primary);
+  color: #fff;
+  padding: 1.5rem 0;
+}
+.tramite-page-header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+.tramite-detail-body {
+  padding: 2rem 0 3rem;
+}
+.tramite-detail-body .section-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--retys-primary);
+  background-color: var(--retys-light-bg);
+  border-left: 4px solid var(--retys-secondary);
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+}
+.tramite-detail-body table th {
+  background-color: var(--retys-primary);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.tramite-detail-body table td {
+  font-size: 0.88rem;
+  vertical-align: middle;
+}
+.btn-download {
+  background-color: var(--retys-primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.4rem 1.1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.25rem 0.25rem 0.25rem 0;
+  transition: background 0.15s;
+}
+.btn-download:hover {
+  background-color: #005aad;
+  color: #fff;
+  text-decoration: none;
+}
+.btn-download-secondary {
+  background-color: var(--retys-secondary);
+}
+.btn-download-secondary:hover {
+  background-color: #c01018;
+}
+.tramite-sidebar {
+  background-color: var(--retys-light-bg);
+  border: 1px solid var(--retys-border);
+  border-radius: 6px;
+  padding: 1.25rem;
+}
+.tramite-sidebar h6 {
+  color: var(--retys-primary);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  border-bottom: 2px solid var(--retys-secondary);
+  padding-bottom: 0.4rem;
+}
+.tramite-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.tramite-sidebar ul li {
+  padding: 0.35rem 0;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--retys-border);
+}
+.tramite-sidebar ul li a {
+  color: var(--retys-primary);
+  text-decoration: none;
+}
+.tramite-sidebar ul li a:hover {
+  color: var(--retys-secondary);
+  text-decoration: underline;
+}
+.badge-tramite {
+  background-color: var(--retys-primary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 3px;
+  padding: 0.25rem 0.55rem;
+}
