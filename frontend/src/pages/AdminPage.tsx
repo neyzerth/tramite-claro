@@ -1,17 +1,26 @@
 import { Fragment, useState, useEffect, useCallback } from 'react'
+import { marked } from 'marked'
 import Container from 'react-bootstrap/Container'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 import Badge from 'react-bootstrap/Badge'
 import Spinner from 'react-bootstrap/Spinner'
 import Alert from 'react-bootstrap/Alert'
+import Modal from 'react-bootstrap/Modal'
 import { listarEstado, generarTramite } from '../api/adminApi'
 import type { TramiteAdminStatus } from '../api/adminApi'
+const BASE_URL = (import.meta.env.VITE_API_URL as string | undefined) ?? 'http://localhost:8000'
 
 interface RowState {
   data: TramiteAdminStatus
   generando: boolean
   error: string | null
+}
+
+interface PreviewState {
+  nombre: string
+  mdContent: string | null
+  cargando: boolean
 }
 
 function AdminPage() {
@@ -20,6 +29,7 @@ function AdminPage() {
   const [errorCarga, setErrorCarga] = useState<string | null>(null)
   const [generandoTodos, setGenerandoTodos] = useState(false)
   const [progresoTodos, setProgresoTodos] = useState<string | null>(null)
+  const [preview, setPreview] = useState<PreviewState | null>(null)
 
   const cargarEstado = useCallback(async () => {
     setCargando(true)
@@ -67,6 +77,17 @@ function AdminPage() {
       setFilas((prev) =>
         prev.map((f) => (f.data.homoclave === homoclave ? { ...f, generando: false, error: mensaje } : f)),
       )
+    }
+  }
+
+  const handleVerPreview = async (fila: RowState) => {
+    setPreview({ nombre: fila.data.nombre, mdContent: null, cargando: true })
+    try {
+      const res = await fetch(`${BASE_URL}/${fila.data.url_documento!}`)
+      const text = res.ok ? await res.text() : null
+      setPreview({ nombre: fila.data.nombre, mdContent: text, cargando: false })
+    } catch {
+      setPreview({ nombre: fila.data.nombre, mdContent: null, cargando: false })
     }
   }
 
@@ -167,7 +188,17 @@ function AdminPage() {
                         </td>
                         <td className="text-center align-middle">
                           {fila.data.tiene_md ? (
-                            <Badge bg="success">✅ Generado</Badge>
+                            <div className="d-flex align-items-center justify-content-center gap-1">
+                              <Badge bg="success">✅ Generado</Badge>
+                              <Button
+                                size="sm"
+                                variant="outline-success"
+                                style={{ padding: '1px 6px', fontSize: '0.75rem' }}
+                                onClick={() => { void handleVerPreview(fila) }}
+                              >
+                                👁 Ver
+                              </Button>
+                            </div>
                           ) : (
                             <Badge bg="secondary">⏳ Pendiente</Badge>
                           )}
@@ -216,6 +247,50 @@ function AdminPage() {
           </>
         )}
       </Container>
+
+      {/* Modal de previsualización de Lectura Fácil */}
+      <Modal
+        show={preview !== null}
+        onHide={() => { setPreview(null) }}
+        size="lg"
+        scrollable
+      >
+        <Modal.Header closeButton style={{ background: '#f0f4fa' }}>
+          <Modal.Title style={{ fontSize: '1rem' }}>
+            📄 Lectura Fácil — {preview?.nombre}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {preview?.cargando && (
+            <div className="text-center py-4">
+              <Spinner animation="border" variant="success" />
+              <p className="mt-2 text-muted">Cargando documento…</p>
+            </div>
+          )}
+          {!preview?.cargando && preview?.mdContent && (
+            <div
+              className="lectura-facil-content p-3 rounded"
+              style={{
+                background: '#f8fff8',
+                border: '2px solid #28a745',
+                lineHeight: 1.8,
+                fontSize: '1rem',
+              }}
+              dangerouslySetInnerHTML={{ __html: marked(preview.mdContent) as string }}
+            />
+          )}
+          {!preview?.cargando && !preview?.mdContent && (
+            <Alert variant="warning" className="mb-0">
+              No se pudo cargar el documento. Verifica que el backend esté activo.
+            </Alert>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => { setPreview(null) }}>
+            Cerrar
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   )
 }
