@@ -1,3 +1,4 @@
+import { marked } from 'marked'
 import { useState, useRef, useEffect } from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -12,42 +13,6 @@ import { Link, useParams } from 'react-router-dom'
 import tramites from '../data/tramites'
 import { consultarAccesible, BASE_URL } from '../api/tramiteApi'
 import type { AccesibleResponse } from '../api/tramiteApi'
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Markdown → HTML helper (no external deps)
-// ─────────────────────────────────────────────────────────────────────────────
-
-function markdownToHtml(md: string): string {
-  const lines = md.split('\n')
-  const output: string[] = []
-  let inList = false
-
-  for (const raw of lines) {
-    const line = raw.trimEnd()
-
-    if (/^## (.+)/.test(line)) {
-      if (inList) { output.push('</ul>'); inList = false }
-      output.push(`<h5>${line.replace(/^## /, '')}</h5>`)
-    } else if (/^# (.+)/.test(line)) {
-      if (inList) { output.push('</ul>'); inList = false }
-      output.push(`<h4>${line.replace(/^# /, '')}</h4>`)
-    } else if (/^[-*] (.+)/.test(line)) {
-      if (!inList) { output.push('<ul>'); inList = true }
-      const itemText = line.replace(/^[-*] /, '').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-      output.push(`<li>${itemText}</li>`)
-    } else if (line.trim() === '') {
-      if (inList) { output.push('</ul>'); inList = false }
-      output.push('<br />')
-    } else {
-      if (inList) { output.push('</ul>'); inList = false }
-      const para = line.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-      output.push(`<p>${para}</p>`)
-    }
-  }
-
-  if (inList) output.push('</ul>')
-  return output.join('\n')
-}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Component
@@ -234,7 +199,7 @@ function TramitePage() {
                         lineHeight: 1.8,
                         fontSize: '1rem',
                       }}
-                      dangerouslySetInnerHTML={{ __html: markdownToHtml(mdContent) }}
+                      dangerouslySetInnerHTML={{ __html: marked(mdContent) as string }}
                     />
                   ) : (
                     <Alert variant="warning">
