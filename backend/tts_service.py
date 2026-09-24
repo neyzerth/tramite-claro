@@ -54,6 +54,17 @@ def limpiar_markdown_para_tts(texto: str) -> str:
     # Bloques de código con triple backtick
     texto = re.sub(r"```[\s\S]*?```", "", texto)
 
+    # Tablas Markdown: convertir cada fila en texto legible
+    # Primero eliminar filas de separación (|---|---|)
+    texto = re.sub(r"^\|?[\s]*[-:]+[\s]*(\|[\s]*[-:]+[\s]*)+\|?[\s]*$", "", texto, flags=re.MULTILINE)
+    # Convertir filas de datos: | col1 | col2 | → "col1. col2."
+    def _fila_tabla_a_texto(m: re.Match) -> str:
+        celdas = [c.strip() for c in m.group(0).split("|") if c.strip()]
+        return ". ".join(celdas) + "." if celdas else ""
+    texto = re.sub(r"^\|.+\|[\s]*$", _fila_tabla_a_texto, texto, flags=re.MULTILINE)
+    # Eliminar cualquier | suelto que quede
+    texto = re.sub(r"\|", " ", texto)
+
     # Encabezados Markdown (# Título)
     texto = re.sub(r"^#{1,6}\s+", "", texto, flags=re.MULTILINE)
 
@@ -95,6 +106,9 @@ def limpiar_markdown_para_tts(texto: str) -> str:
         "",
         texto,
     )
+
+    # Espacios múltiples generados por sustituciones anteriores
+    texto = re.sub(r"  +", " ", texto)
 
     # Múltiples líneas en blanco → una sola
     texto = re.sub(r"\n{3,}", "\n\n", texto)
