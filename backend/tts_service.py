@@ -51,37 +51,98 @@ def limpiar_markdown_para_tts(texto: str) -> str:
     - Líneas horizontales (---) → eliminadas.
     - Líneas en blanco múltiples → una sola línea en blanco.
     """
-    # Bloques de código con triple backtick
+    # ── 1. Bloques que se eliminan completos ─────────────────────────────────
+
+    # Bloques de código con triple backtick (```...```)
     texto = re.sub(r"```[\s\S]*?```", "", texto)
 
-    # Encabezados Markdown (# Título)
-    texto = re.sub(r"^#{1,6}\s+", "", texto, flags=re.MULTILINE)
+    # Bloques de código indentados con 4 espacios o 1 tab
+    texto = re.sub(r"^( {4}|\t).+$", "", texto, flags=re.MULTILINE)
 
+    # Definiciones de links de referencia ([id]: url "título")
+    texto = re.sub(r"^\[[^\]]+\]:\s+\S+.*$", "", texto, flags=re.MULTILINE)
+
+    # Bloques HTML completos (<tag>...</tag> o etiquetas sueltas)
+    texto = re.sub(r"<[^>]+>", "", texto)
+
+    # Autolinks (<https://url> o <email@example.com>)
+    texto = re.sub(r"<(https?://[^>]+|[^@\s>]+@[^>\s]+)>", r"\1", texto)
+
+    # ── 2. Tablas Markdown ───────────────────────────────────────────────────
+
+    # Filas separadoras de cabecera (|---|---|  o  |:---|:---:|)
+    texto = re.sub(r"^\|?[\s]*[-:]+[\s]*(\|[\s]*[-:]+[\s]*)+\|?[\s]*$", "", texto, flags=re.MULTILINE)
+    # Filas de datos: | col1 | col2 | → "col1. col2."
+    def _fila_tabla_a_texto(m: re.Match) -> str:
+        celdas = [c.strip() for c in m.group(0).split("|") if c.strip()]
+        return ". ".join(celdas) + "." if celdas else ""
+    texto = re.sub(r"^\|.+\|[\s]*$", _fila_tabla_a_texto, texto, flags=re.MULTILINE)
+    # Barras verticales sueltas restantes
+    texto = re.sub(r"\|", " ", texto)
+
+    # ── 3. Encabezados ───────────────────────────────────────────────────────
+
+    texto = re.sub(r"^#{1,6}\s+", "", texto, flags=re.MULTILINE)
+    # Encabezados setext (línea subrayada con === o ---)
+    texto = re.sub(r"^[=\-]{2,}[\s]*$", "", texto, flags=re.MULTILINE)
+
+    # ── 4. Énfasis ───────────────────────────────────────────────────────────
+
+    # Tachado GFM ~~texto~~
+    texto = re.sub(r"~~(.+?)~~", r"\1", texto)
     # Negrita + itálica combinada ***texto***
     texto = re.sub(r"\*{3}(.+?)\*{3}", r"\1", texto)
     # Negrita **texto** y __texto__
     texto = re.sub(r"\*{2}(.+?)\*{2}", r"\1", texto)
     texto = re.sub(r"_{2}(.+?)_{2}", r"\1", texto)
-    # Itálica *texto* y _texto_ (sin tocar los guiones de lista ya limpios)
+    # Itálica *texto* y _texto_
     texto = re.sub(r"\*(.+?)\*", r"\1", texto)
     texto = re.sub(r"_(.+?)_", r"\1", texto)
+    # Superíndice ^texto^ e subíndice ~texto~
+    texto = re.sub(r"\^(.+?)\^", r"\1", texto)
+    texto = re.sub(r"~(.+?)~", r"\1", texto)
 
-    # Código inline `texto`
+    # ── 5. Código inline ─────────────────────────────────────────────────────
+
     texto = re.sub(r"`(.+?)`", r"\1", texto)
 
+    # ── 6. Links e imágenes ──────────────────────────────────────────────────
+
+    # Imágenes ![alt](url) → solo el texto alternativo
+    texto = re.sub(r"!\[([^\]]*)\]\([^\)]+\)", r"\1", texto)
     # Links [texto](url) → texto
     texto = re.sub(r"\[([^\]]+)\]\([^\)]+\)", r"\1", texto)
+    # Links de referencia [texto][id] → texto
+    texto = re.sub(r"\[([^\]]+)\]\[[^\]]*\]", r"\1", texto)
+    # Corchetes sueltos que puedan quedar
+    texto = re.sub(r"\[([^\]]+)\]", r"\1", texto)
 
-    # Viñetas al inicio de línea (-, *, •)
-    texto = re.sub(r"^[\s]*[-*•]\s+", "", texto, flags=re.MULTILINE)
+    # ── 7. Blockquotes ───────────────────────────────────────────────────────
 
-    # Listas numeradas al inicio de línea (1. 2. ...)
+    # Quitar el > al inicio de cada línea de cita
+    texto = re.sub(r"^>+\s?", "", texto, flags=re.MULTILINE)
+
+    # ── 8. Listas ────────────────────────────────────────────────────────────
+
+    # Viñetas (-, *, +, •) al inicio de línea
+    texto = re.sub(r"^[\s]*[-*+•]\s+", "", texto, flags=re.MULTILINE)
+    # Listas numeradas (1. 2. ...)
     texto = re.sub(r"^[\s]*\d+\.\s+", "", texto, flags=re.MULTILINE)
 
-    # Líneas horizontales (--- o ***)
+    # ── 9. Líneas horizontales ───────────────────────────────────────────────
+
     texto = re.sub(r"^[\s]*[-*_]{3,}[\s]*$", "", texto, flags=re.MULTILINE)
 
-    # Emojis Unicode
+    # ── 10. Caracteres escapados con backslash (\* \_ \# etc.) ───────────────
+
+    texto = re.sub(r"\\([\\`*_{}\[\]()#+\-.!|>~^])", r"\1", texto)
+
+    # ── 11. Saltos de línea forzados (dos espacios al final de línea) ─────────
+
+    texto = re.sub(r"  +$", "", texto, flags=re.MULTILINE)
+
+    # ── 12. Emojis Unicode ───────────────────────────────────────────────────
+
     texto = re.sub(
         r"[\U00002600-\U000027BF"
         r"\U0001F300-\U0001F9FF"
@@ -96,6 +157,10 @@ def limpiar_markdown_para_tts(texto: str) -> str:
         texto,
     )
 
+    # ── 13. Limpieza final ───────────────────────────────────────────────────
+
+    # Espacios múltiples → uno solo
+    texto = re.sub(r"  +", " ", texto)
     # Múltiples líneas en blanco → una sola
     texto = re.sub(r"\n{3,}", "\n\n", texto)
 
