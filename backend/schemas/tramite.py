@@ -3,7 +3,6 @@
 # (lo que la API responde), sin acoplarlos al modelo de base de datos.
 
 from typing import Optional
-
 from pydantic import BaseModel, Field
 
 
